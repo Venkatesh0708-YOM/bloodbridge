@@ -1,0 +1,45 @@
+# Compiled Java / Maven
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+hs_err_pid*
+replay_pid*
+
+# IDE & Editor Configurations
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
+.project
+.classpath
+.settings/
+.DS_Store
+Thumbs.db
+
+# Environment & Secrets (NEVER COMMIT SENSITIVE DATA)
+.env
+.env.*
+application-local.properties
+application-secret.properties
+
+# Logs
+logs/
+*.log
+
+# Database Local Dumps & Temp Files
+database/dumps/*.sql
+!database/dumps/.gitkeep
+database/backups/
+
+# Node / Frontend Build (if tooling added later)
+node_modules/
+dist/
+build/
+.npm/
+
+# OS-generated files
+[Dd]esktop.ini
