@@ -1,0 +1,256 @@
+/* ==========================================================================
+   BloodBridge - Responsive Stylesheet
+   Breakpoints: 1024px (Tablet/Small Laptop), 768px (Tablet Portrait), 480px (Mobile)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Large Tablets & Small Laptops (<= 1024px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+    .section {
+        padding: 4rem 0;
+    }
+
+    .brand-logo {
+        margin-right: 1.25rem;
+    }
+
+    .nav-menu {
+        gap: 0.95rem;
+    }
+
+    .nav-link {
+        font-size: 0.84375rem;
+    }
+
+    .nav-actions {
+        gap: 0.5rem;
+    }
+
+    .nav-actions .btn {
+        padding: 0.45rem 0.75rem;
+        font-size: 0.8125rem;
+    }
+    
+    .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        text-align: center;
+    }
+
+    .hero-content {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-cta-group {
+        justify-content: center;
+    }
+
+    .hero-metrics {
+        justify-content: center;
+    }
+
+    .hero-visual {
+        max-width: 520px;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .search-form-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .search-form-grid .form-group-btn {
+        grid-column: span 2;
+    }
+
+    .steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .roles-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .trust-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.5rem;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   2. Tablets & Mobile Landscape (<= 768px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+    .site-header {
+        position: relative;
+    }
+
+    .brand-logo {
+        margin-right: 0;
+    }
+
+    .mobile-toggle {
+        display: block;
+        margin-left: auto;
+    }
+
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--bg-surface);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.5rem;
+        border-bottom: 1px solid var(--border-color);
+        box-shadow: var(--shadow-lg);
+        gap: 1.25rem;
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .nav-link {
+        width: 100%;
+        padding: 0.5rem 0;
+        font-size: 1rem;
+    }
+
+    .nav-actions {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 0.75rem;
+        padding-top: 1rem;
+        margin-left: 0;
+        border-top: 1px solid var(--border-color);
+    }
+
+    .nav-actions .btn {
+        width: 100%;
+        padding: 0.6875rem 1.375rem;
+        font-size: 0.9375rem;
+    }
+
+    .hero-title {
+        font-size: 2.15rem;
+    }
+
+    .hero-description {
+        font-size: 1rem;
+    }
+
+    .hero-metrics {
+        flex-wrap: wrap;
+        gap: 1.5rem;
+    }
+
+    .search-box-card {
+        padding: 1.5rem;
+        margin-top: -2rem;
+    }
+
+    .search-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .search-form-grid .form-group-btn {
+        grid-column: span 1;
+    }
+
+    .steps-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .trust-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .trust-banner-box {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .footer-legal-notice {
+        text-align: center;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   3. Small Mobile Devices (<= 480px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+    .section {
+        padding: 3rem 0;
+    }
+
+    .section-title {
+        font-size: 1.75rem;
+    }
+
+    .hero-title {
+        font-size: 1.85rem;
+    }
+
+    .hero-cta-group {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .hero-cta-group .btn {
+        width: 100%;
+    }
+
+    .hero-card {
+        padding: 1.25rem;
+    }
+
+    .request-card-mini {
+        padding: 0.75rem;
+    }
+
+    .blood-type-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 0.95rem;
+    }
+
+    .cta-title {
+        font-size: 1.75rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .cta-buttons .btn {
+        width: 100%;
+    }
+}

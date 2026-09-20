@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BloodBridge connects blood donors and blood-bank resources with those who need them based on blood group, component, availability, and location.">
+    <title>BloodBridge — Connecting Blood Donors With Those in Need</title>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+    <!-- =====================================================================
+         1. Navigation Header
+         ===================================================================== -->
+    <header class="site-header" id="siteHeader">
+        <div class="container nav-container">
+            <!-- Brand Logo -->
+            <a href="#" class="brand-logo" aria-label="BloodBridge Home">
+                <svg class="brand-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                </svg>
+                <span class="brand-text">Blood<span>Bridge</span></span>
+            </a>
+
+            <!-- Navigation Links & Single Set of Auth Buttons -->
+            <nav class="nav-menu" id="navMenu" aria-label="Main Navigation">
+                <a href="#hero" class="nav-link">Home</a>
+                <a href="#find-blood" class="nav-link">Find Blood</a>
+                <a href="#roles" class="nav-link">Donate Blood</a>
+                <a href="#roles" class="nav-link">Blood Banks</a>
+                <a href="#how-it-works" class="nav-link">How It Works</a>
+                <a href="#trust" class="nav-link">Trust & Safety</a>
+
+                <div class="nav-actions">
+                    <button type="button" class="btn btn-secondary btn-sm" data-action-placeholder="login">Login</button>
+                    <button type="button" class="btn btn-primary btn-sm" data-action-placeholder="register">Register</button>
+                </div>
+            </nav>
+
+            <!-- Mobile Hamburger Toggle -->
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation Menu" aria-expanded="false" aria-controls="navMenu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- =================================================================
+             2. Hero Section
+             ================================================================= -->
+        <section class="hero-section" id="hero">
+            <div class="container hero-grid">
+                <!-- Left Hero Content -->
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <span class="hero-badge-pulse" aria-hidden="true"></span>
+                        <span>Direct Healthcare Discovery Platform</span>
+                    </div>
+                    <h1 class="hero-title">
+                        Connecting Blood Donors <span>With Those Who Need Them</span>
+                    </h1>
+                    <p class="hero-description">
+                        BloodBridge helps people discover potential blood donors and blood-bank resources based on blood group, availability and location.
+                    </p>
+                    <div class="hero-cta-group">
+                        <a href="#find-blood" class="btn btn-primary btn-lg">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                            Find Blood
+                        </a>
+                        <a href="#roles" class="btn btn-secondary btn-lg">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                            </svg>
+                            Become a Donor
+                        </a>
+                    </div>
+                    <div class="hero-metrics">
+                        <div class="metric-item">
+                            <span class="metric-number">4 Roles</span>
+                            <span class="metric-label">Unified Platform</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-number">8 Groups</span>
+                            <span class="metric-label">Full Blood Match</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-number">Location-Aware</span>
+                            <span class="metric-label">Radius Search</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Hero Visual Card -->
+                <div class="hero-visual" aria-label="BloodBridge Platform Preview">
+                    <div class="hero-card">
+                        <div class="card-header-bar">
+                            <div>
+                                <span class="card-header-title">BloodBridge Platform Preview</span>
+                                <div><span class="card-demo-badge">Demo Interface</span></div>
+                            </div>
+                            <span class="status-badge preview-badge">Prototype Mode</span>
+                        </div>
+                        <div class="live-request-preview">
+                            <div class="request-card-mini">
+                                <div class="blood-type-badge">O+</div>
+                                <div class="request-info">
+                                    <div class="request-title">Sample Request: Platelets</div>
+                                    <div class="request-meta">Demo Healthcare Facility • Sample Proximity</div>
+                                </div>
+                                <span class="tag-urgency critical">Emergency</span>
+                            </div>
+
+                            <div class="request-card-mini">
+                                <div class="blood-type-badge">A+</div>
+                                <div class="request-info">
+                                    <div class="request-title">Sample Request: Whole Blood</div>
+                                    <div class="request-meta">Demo Regional Center • Sample Proximity</div>
+                                </div>
+                                <span class="tag-urgency urgent">Urgent</span>
+                            </div>
+
+                            <div class="request-card-mini">
+                                <div class="blood-type-badge">B+</div>
+                                <div class="request-info">
+                                    <div class="request-title">Sample Resource: Plasma Stock</div>
+                                    <div class="request-meta">Demo Blood Bank Facility • Sample Proximity</div>
+                                </div>
+                                <span class="tag-urgency">Normal</span>
+                            </div>
+                        </div>
+
+                        <div class="hero-visual-card-sub">
+                            <svg class="sub-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="12" y1="16" x2="12" y2="12"></line>
+                                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                            </svg>
+                            <span class="sub-card-text">
+                                Example interface — live data will be connected later.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================================
+             3. Blood Search Section
+             ================================================================= -->
+        <section class="section search-section" id="find-blood">
+            <div class="container">
+                <div class="search-box-card">
+                    <div class="section-header" style="margin-bottom: 2rem; text-align: left;">
+                        <span class="section-tag">Direct Search</span>
+                        <h2 class="section-title" style="font-size: 1.85rem; margin-bottom: 0.5rem;">Find Blood Near You</h2>
+                        <p class="section-subtitle" style="font-size: 0.95rem;">
+                            Specify blood group, component, and location to search compatible voluntary donors and blood banks.
+                        </p>
+                    </div>
+
+                    <form id="bloodSearchForm" class="search-form-grid" novalidate>
+                        <!-- Blood Group -->
+                        <div class="form-group">
+                            <label for="bloodGroup" class="form-label">Blood Group</label>
+                            <select id="bloodGroup" class="form-control" required>
+                                <option value="" disabled selected>Select Group</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                            </select>
+                        </div>
+
+                        <!-- Component -->
+                        <div class="form-group">
+                            <label for="bloodComponent" class="form-label">Component</label>
+                            <select id="bloodComponent" class="form-control" required>
+                                <option value="" disabled selected>Select Component</option>
+                                <option value="Whole Blood">Whole Blood</option>
+                                <option value="Plasma">Plasma</option>
+                                <option value="Platelets">Platelets</option>
+                                <option value="Red Blood Cells">Red Blood Cells (PRBC)</option>
+                            </select>
+                        </div>
+
+                        <!-- Location -->
+                        <div class="form-group">
+                            <label for="locationInput" class="form-label">Location / City</label>
+                            <input type="text" id="locationInput" class="form-control" placeholder="Enter city or area" required>
+                        </div>
+
+                        <!-- Urgency -->
+                        <div class="form-group">
+                            <label for="urgencyLevel" class="form-label">Urgency</label>
+                            <select id="urgencyLevel" class="form-control" required>
+                                <option value="Normal">Normal</option>
+                                <option value="Urgent">Urgent</option>
+                                <option value="Emergency">Emergency</option>
+                            </select>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="form-group form-group-btn">
+                            <button type="submit" class="btn btn-primary btn-full" style="height: 3rem;">
+                                Search Available Help
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- Feedback Banner -->
+                    <div id="searchFeedback" class="feedback-banner" role="status" aria-live="polite"></div>
+
+                    <div class="search-disclaimer">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="8" x2="12" y2="12"></line>
+                            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                        </svg>
+                        <span>Discovery tool only. Medical cross-matching and transfusion eligibility are verified by qualified clinical staff.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================================
+             4. How It Works Section
+             ================================================================= -->
+        <section class="section how-it-works-section" id="how-it-works">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Process Flow</span>
+                    <h2 class="section-title">How BloodBridge Works</h2>
+                    <p class="section-subtitle">
+                        A structured, transparent 4-step workflow connecting requests with available blood resources.
+                    </p>
+                </div>
+
+                <div class="steps-grid">
+                    <!-- Step 1 -->
+                    <div class="step-card">
+                        <span class="step-number-pill">Step 01</span>
+                        <div class="step-icon-wrap">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="12" y1="18" x2="12" y2="12"></line>
+                                <line x1="9" y1="15" x2="15" y2="15"></line>
+                            </svg>
+                        </div>
+                        <h3 class="step-title">Create a Request</h3>
+                        <p class="step-description">
+                            Requesters submit required blood group, component type, needed units, hospital location, and urgency level.
+                        </p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="step-card">
+                        <span class="step-number-pill">Step 02</span>
+                        <div class="step-icon-wrap">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                        </div>
+                        <h3 class="step-title">Find Potential Matches</h3>
+                        <p class="step-description">
+                            BloodBridge calculates proximity, availability, and cooldown eligibility to identify relevant voluntary donors and blood banks.
+                        </p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="step-card">
+                        <span class="step-number-pill">Step 03</span>
+                        <div class="step-icon-wrap">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                        </div>
+                        <h3 class="step-title">Connect</h3>
+                        <p class="step-description">
+                            Donors and blood banks receive alerts and can respond or coordinate directly through structured platform channels.
+                        </p>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="step-card medical-step">
+                        <span class="step-number-pill">Step 04</span>
+                        <div class="step-icon-wrap" style="color: var(--secondary);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                            </svg>
+                        </div>
+                        <h3 class="step-title">Medical Screening</h3>
+                        <p class="step-description">
+                            Final donor suitability, compatibility testing, and transfusion decisions are handled strictly by certified healthcare professionals.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================================
+             5. User Role Section
+             ================================================================= -->
+        <section class="section roles-section" id="roles">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Role Ecosystem</span>
+                    <h2 class="section-title">Built for Every Participant</h2>
+                    <p class="section-subtitle">
+                        Customized tools and workflows tailored to donors, patients, and healthcare facilities.
+                    </p>
+                </div>
+
+                <div class="roles-grid">
+                    <!-- Role 1: Donor -->
+                    <div class="role-card">
+                        <div>
+                            <div class="role-card-header">
+                                <div class="role-icon-box">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="role-name">Donor</h3>
+                            </div>
+                            <p class="role-description">
+                                Help someone in need by making your availability visible to nearby patients during urgent requests.
+                            </p>
+                            <div class="role-features-list">
+                                <div class="role-feature-item">
+                                    <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                                    <span>Manage blood group & cooldown interval</span>
+                                </div>
+                                <div class="role-feature-item">
+                                    <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                                    <span>Set preferred travel radius</span>
+                                </div>
+                                <div class="role-feature-item">
+                                    <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                                    <span>Private & secure contact workflow</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary btn-full" data-action-placeholder="donor">
+                            Become a Donor
+                        </button>
+                    </div>
+
+                    <!-- Role 2: Requester -->
+                    <div class="role-card">
+                        <div>
+                            <div class="role-card-header">
+                                <div class="role-icon-box" style="background-color: var(--secondary-light); color: var(--secondary);">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="8.5" cy="7" r="4"></circle>
+                                        <polyline points="17 11 19 13 23 9"></polyline>
+                                    </svg>
+                                </div>
+                                <h3 class="role-name">Requester</h3>
+                            </div>
+                            <p class="role-description">
+                                Create a blood request and discover relevant nearby voluntary donors and blood bank resources.
+                            </p>
+                            <div class="role-features-list">
+                                <div class="role-feature-item">
+                                    <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                                    <span>Request specific blood components</span>
+                                </div>
+                                <div class="role-feature-item">
+                                    <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                                    <span>Hospital location proximity matching</span>
+                                </div>
+                                <div class="role-feature-item">
+                                    <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                                    <span>Real-time status updates & alerts</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-secondary btn-full" data-action-placeholder="requester">
+                            Request Blood
+                        </button>
+                    </div>
+
+                    <!-- Role 3: Blood Bank -->
+                    <div class="role-card">
+                        <div>
+                            <div class="role-card-header">
+                                <div class="role-icon-box" style="background-color: #f1f5f9; color: var(--text-primary);">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="role-name">Blood Bank</h3>
+                            </div>
+                            <p class="role-description">
+                                Manage blood-component availability, maintain inventory counts, and respond to urgent regional requests.
+                            </p>
+                            <div class="role-features-list">
+                                <div class="role-feature-item">
+                                    <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                                    <span>Track Whole Blood, PRBC, Platelets & FFP</span>
+                                </div>
+                                <div class="role-feature-item">
+                                    <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                                    <span>License accreditation status</span>
+                                </div>
+                                <div class="role-feature-item">
+                                    <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                                    <span>Coordinate directly with hospital attenders</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-secondary btn-full" data-action-placeholder="blood-bank">
+                            Register Blood Bank
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================================
+             6. Trust & Safety Section
+             ================================================================= -->
+        <section class="section trust-section" id="trust">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Platform Integrity</span>
+                    <h2 class="section-title">Built with Responsibility & Security</h2>
+                    <p class="section-subtitle">
+                        BloodBridge is engineered as a secure technology facilitator prioritizing privacy, clarity, and safety.
+                    </p>
+                </div>
+
+                <div class="trust-grid">
+                    <!-- Point 1 -->
+                    <div class="trust-card">
+                        <div class="trust-icon-wrap">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                            </svg>
+                        </div>
+                        <h3 class="trust-title">Secure Account-Based Access</h3>
+                        <p class="trust-text">
+                            Role-based access control with secure credentials ensures sensitive donor coordinates are never publicly exposed.
+                        </p>
+                    </div>
+
+                    <!-- Point 2 -->
+                    <div class="trust-card">
+                        <div class="trust-icon-wrap">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                            </svg>
+                        </div>
+                        <h3 class="trust-title">Structured Request Data</h3>
+                        <p class="trust-text">
+                            Standardized parameters eliminate ambiguity regarding exact blood components, units required, and hospital details.
+                        </p>
+                    </div>
+
+                    <!-- Point 3 -->
+                    <div class="trust-card">
+                        <div class="trust-icon-wrap">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="2" y1="12" x2="22" y2="12"></line>
+                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="trust-title">Location-Aware Discovery</h3>
+                        <p class="trust-text">
+                            Proximity calculations discover matching candidates within a defined radius while preserving residential privacy.
+                        </p>
+                    </div>
+
+                    <!-- Point 4 -->
+                    <div class="trust-card">
+                        <div class="trust-icon-wrap">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="trust-title">Blood-Bank Resource Visibility</h3>
+                        <p class="trust-text">
+                            Enables registered facilities to maintain up-to-date component stock levels, reducing search times during emergencies.
+                        </p>
+                    </div>
+
+                    <!-- Point 5 -->
+                    <div class="trust-card" style="grid-column: span 2;">
+                        <div class="trust-icon-wrap" style="color: var(--primary);">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="trust-title">Medical Decisions Remain with Qualified Professionals</h3>
+                        <p class="trust-text">
+                            BloodBridge is strictly a discovery facilitator. Donor medical eligibility, infectious disease screening, ABO/Rh cross-matching, and transfusion approvals must always be executed by certified blood-bank and healthcare clinicians.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="trust-banner-box">
+                    <svg class="trust-banner-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <div class="trust-banner-content">
+                        <strong>Practical Prototype Notice:</strong> BloodBridge is being developed as a transparent prototype to demonstrate robust backend engineering, spatial discovery, and secure data modeling.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================================
+             7. Call To Action (CTA) Section
+             ================================================================= -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-box">
+                    <h2 class="cta-title">Be Part of the BloodBridge Network</h2>
+                    <p class="cta-subtitle">
+                        Help make blood discovery faster, more organized and more accessible for hospitals, attenders, and donors.
+                    </p>
+                    <div class="cta-buttons">
+                        <a href="#find-blood" class="btn btn-primary btn-lg">Find Blood</a>
+                        <button type="button" class="btn btn-white-outline btn-lg" data-action-placeholder="donor">Become a Donor</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- =====================================================================
+         8. Footer
+         ===================================================================== -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Brand Column -->
+                <div class="footer-brand">
+                    <a href="#" class="brand-logo">
+                        <svg class="brand-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                        </svg>
+                        <span class="brand-text">Blood<span>Bridge</span></span>
+                    </a>
+                    <p class="footer-tagline">"Connecting People. Saving Lives."</p>
+                    <p class="footer-summary">
+                        A real-world prototype platform connecting voluntary donors, patient attenders, and certified blood banks through location-aware discovery.
+                    </p>
+                </div>
+
+                <!-- Column 1: Navigation -->
+                <div>
+                    <h4 class="footer-col-title">Quick Links</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="#hero" class="footer-link">Home</a></li>
+                        <li><a href="#find-blood" class="footer-link">Find Blood</a></li>
+                        <li><a href="#how-it-works" class="footer-link">How It Works</a></li>
+                        <li><a href="#trust" class="footer-link">Trust & Safety</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 2: Ecosystem -->
+                <div>
+                    <h4 class="footer-col-title">Portals</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="#roles" class="footer-link">Donor Portal</a></li>
+                        <li><a href="#roles" class="footer-link">Requester Portal</a></li>
+                        <li><a href="#roles" class="footer-link">Blood Bank Directory</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Legal & Standards -->
+                <div>
+                    <h4 class="footer-col-title">Project Standards</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="../docs/architecture/ARCHITECTURE.md" class="footer-link">System Architecture</a></li>
+                        <li><a href="../docs/database/DATABASE_DESIGN.md" class="footer-link">Database Schema</a></li>
+                        <li><a href="../docs/api/API_SPEC.md" class="footer-link">API Specification</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div>&copy; 2026 BloodBridge. All rights reserved.</div>
+                <div class="footer-legal-notice">
+                    Medical Disclaimer: BloodBridge facilitates discovery and does not make clinical transfusion determinations.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- =====================================================================
+         9. Interactive Placeholder Modal
+         ===================================================================== -->
+    <div class="modal-overlay" id="infoModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-dialog">
+            <button type="button" class="modal-close-btn" id="modalCloseBtn" aria-label="Close modal">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="modal-header-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                </svg>
+            </div>
+            <h3 class="modal-title" id="modalTitle">Feature Notice</h3>
+            <p class="modal-body-text" id="modalDescription"></p>
+            <button type="button" class="btn btn-primary btn-full" id="modalConfirmBtn">Got it</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+</body>
+</html>
