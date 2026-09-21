@@ -200,6 +200,19 @@
     .footer-legal-notice {
         text-align: center;
     }
+
+    .form-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .form-grid-2col,
+    .form-grid-3col {
+        grid-template-columns: 1fr;
+    }
+
+    .summary-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* --------------------------------------------------------------------------
@@ -251,6 +264,23 @@
     }
 
     .cta-buttons .btn {
+        width: 100%;
+    }
+
+    .form-card {
+        padding: 1.5rem 1rem;
+    }
+
+    .form-section-title {
+        font-size: 1.05rem;
+    }
+
+    .success-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .success-actions .btn {
         width: 100%;
     }
 }

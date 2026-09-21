@@ -28,8 +28,8 @@
             <!-- Navigation Links & Single Set of Auth Buttons -->
             <nav class="nav-menu" id="navMenu" aria-label="Main Navigation">
                 <a href="#hero" class="nav-link">Home</a>
-                <a href="#find-blood" class="nav-link">Find Blood</a>
-                <a href="#roles" class="nav-link">Donate Blood</a>
+                <a href="request-blood.html" class="nav-link">Find Blood</a>
+                <a href="donor-register.html" class="nav-link">Donate Blood</a>
                 <a href="#roles" class="nav-link">Blood Banks</a>
                 <a href="#how-it-works" class="nav-link">How It Works</a>
                 <a href="#trust" class="nav-link">Trust & Safety</a>
@@ -70,14 +70,14 @@
                         BloodBridge helps people discover potential blood donors and blood-bank resources based on blood group, availability and location.
                     </p>
                     <div class="hero-cta-group">
-                        <a href="#find-blood" class="btn btn-primary btn-lg">
+                        <a href="request-blood.html" class="btn btn-primary btn-lg">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="11" cy="11" r="8"></circle>
                                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                             </svg>
                             Find Blood
                         </a>
-                        <a href="#roles" class="btn btn-secondary btn-lg">
+                        <a href="donor-register.html" class="btn btn-secondary btn-lg">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
                             </svg>
@@ -160,12 +160,15 @@
         <section class="section search-section" id="find-blood">
             <div class="container">
                 <div class="search-box-card">
-                    <div class="section-header" style="margin-bottom: 2rem; text-align: left;">
-                        <span class="section-tag">Direct Search</span>
-                        <h2 class="section-title" style="font-size: 1.85rem; margin-bottom: 0.5rem;">Find Blood Near You</h2>
-                        <p class="section-subtitle" style="font-size: 0.95rem;">
-                            Specify blood group, component, and location to search compatible voluntary donors and blood banks.
-                        </p>
+                    <div class="section-header" style="margin-bottom: 2rem; text-align: left; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem;">
+                        <div>
+                            <span class="section-tag">Direct Search</span>
+                            <h2 class="section-title" style="font-size: 1.85rem; margin-bottom: 0.5rem;">Find Blood Near You</h2>
+                            <p class="section-subtitle" style="font-size: 0.95rem;">
+                                Specify blood group, component, and location to search compatible voluntary donors and blood banks.
+                            </p>
+                        </div>
+                        <a href="request-blood.html" class="btn btn-outline btn-sm">Full Request Form &rarr;</a>
                     </div>
 
                     <form id="bloodSearchForm" class="search-form-grid" novalidate>
@@ -359,9 +362,9 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="button" class="btn btn-primary btn-full" data-action-placeholder="donor">
+                        <a href="donor-register.html" class="btn btn-primary btn-full">
                             Become a Donor
-                        </button>
+                        </a>
                     </div>
 
                     <!-- Role 2: Requester -->
@@ -395,9 +398,9 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="button" class="btn btn-secondary btn-full" data-action-placeholder="requester">
+                        <a href="request-blood.html" class="btn btn-secondary btn-full">
                             Request Blood
-                        </button>
+                        </a>
                     </div>
 
                     <!-- Role 3: Blood Bank -->
@@ -544,8 +547,8 @@
                         Help make blood discovery faster, more organized and more accessible for hospitals, attenders, and donors.
                     </p>
                     <div class="cta-buttons">
-                        <a href="#find-blood" class="btn btn-primary btn-lg">Find Blood</a>
-                        <button type="button" class="btn btn-white-outline btn-lg" data-action-placeholder="donor">Become a Donor</button>
+                        <a href="request-blood.html" class="btn btn-primary btn-lg">Find Blood</a>
+                        <a href="donor-register.html" class="btn btn-white-outline btn-lg">Become a Donor</a>
                     </div>
                 </div>
             </div>
@@ -577,7 +580,7 @@
                     <h4 class="footer-col-title">Quick Links</h4>
                     <ul class="footer-links-list">
                         <li><a href="#hero" class="footer-link">Home</a></li>
-                        <li><a href="#find-blood" class="footer-link">Find Blood</a></li>
+                        <li><a href="request-blood.html" class="footer-link">Find Blood</a></li>
                         <li><a href="#how-it-works" class="footer-link">How It Works</a></li>
                         <li><a href="#trust" class="footer-link">Trust & Safety</a></li>
                     </ul>
@@ -587,8 +590,8 @@
                 <div>
                     <h4 class="footer-col-title">Portals</h4>
                     <ul class="footer-links-list">
-                        <li><a href="#roles" class="footer-link">Donor Portal</a></li>
-                        <li><a href="#roles" class="footer-link">Requester Portal</a></li>
+                        <li><a href="donor-register.html" class="footer-link">Donor Portal</a></li>
+                        <li><a href="request-blood.html" class="footer-link">Requester Portal</a></li>
                         <li><a href="#roles" class="footer-link">Blood Bank Directory</a></li>
                     </ul>
                 </div>

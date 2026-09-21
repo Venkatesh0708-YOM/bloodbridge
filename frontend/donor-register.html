@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Register as a voluntary blood donor on BloodBridge to help patients in need during urgent requirements.">
+    <title>Become a Donor — BloodBridge</title>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+    <!-- =====================================================================
+         1. Navigation Header
+         ===================================================================== -->
+    <header class="site-header" id="siteHeader">
+        <div class="container nav-container">
+            <!-- Brand Logo -->
+            <a href="index.html" class="brand-logo" aria-label="BloodBridge Home">
+                <svg class="brand-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                </svg>
+                <span class="brand-text">Blood<span>Bridge</span></span>
+            </a>
+
+            <!-- Navigation Links & Single Set of Auth Buttons -->
+            <nav class="nav-menu" id="navMenu" aria-label="Main Navigation">
+                <a href="index.html#hero" class="nav-link">Home</a>
+                <a href="request-blood.html" class="nav-link">Find Blood</a>
+                <a href="donor-register.html" class="nav-link active" style="color: var(--primary); font-weight: 700;">Donate Blood</a>
+                <a href="index.html#roles" class="nav-link">Blood Banks</a>
+                <a href="index.html#how-it-works" class="nav-link">How It Works</a>
+                <a href="index.html#trust" class="nav-link">Trust & Safety</a>
+
+                <div class="nav-actions">
+                    <button type="button" class="btn btn-secondary btn-sm" data-action-placeholder="login">Login</button>
+                    <button type="button" class="btn btn-primary btn-sm" data-action-placeholder="register">Register</button>
+                </div>
+            </nav>
+
+            <!-- Mobile Hamburger Toggle -->
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation Menu" aria-expanded="false" aria-controls="navMenu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- =================================================================
+             2. Page Header & Breadcrumb
+             ================================================================= -->
+        <section class="page-header-section">
+            <div class="container form-page-container">
+                <nav class="breadcrumb-nav" aria-label="Breadcrumbs">
+                    <a href="index.html" class="breadcrumb-link">Home</a>
+                    <span class="breadcrumb-separator" aria-hidden="true">/</span>
+                    <span class="breadcrumb-current" aria-current="page">Become a Donor</span>
+                </nav>
+
+                <div class="section-header" style="text-align: left; margin-bottom: 0;">
+                    <span class="section-tag">Donor Onboarding</span>
+                    <h1 class="section-title" style="font-size: 2.25rem;">Become a BloodBridge Donor</h1>
+                    <p class="section-subtitle">
+                        Create your donor profile so people searching for blood can discover your availability.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================================
+             3. Donor Registration Form Section
+             ================================================================= -->
+        <section class="section" style="padding-top: 3rem;">
+            <div class="container form-page-container">
+
+                <!-- Important Medical Disclaimer Box -->
+                <div class="form-notice-box" role="note">
+                    <svg class="form-notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="8" x2="12" y2="12"></line>
+                        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                    <div class="form-notice-content">
+                        <strong>Important Healthcare Notice:</strong> Registration does not confirm medical eligibility. Final donor eligibility and clinical blood compatibility are determined by qualified medical professionals at the time of donation.
+                    </div>
+                </div>
+
+                <!-- Registration Form Card -->
+                <div class="form-card" id="donorFormCard">
+                    <form id="donorRegistrationForm" novalidate>
+                        
+                        <!-- Fieldset 1: Personal & Contact Information -->
+                        <fieldset class="form-section-fieldset">
+                            <div class="form-section-header">
+                                <h2 class="form-section-title">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="12" cy="7" r="4"></circle>
+                                    </svg>
+                                    1. Personal & Contact Information
+                                </h2>
+                                <p class="form-section-desc">Your basic details for account creation and urgent contact.</p>
+                            </div>
+
+                            <div class="form-grid-2col">
+                                <!-- Full Name -->
+                                <div class="form-group">
+                                    <label for="donorFullName" class="form-label">Full Name <span class="required-indicator">*</span></label>
+                                    <input type="text" id="donorFullName" class="form-control" placeholder="Enter your full name" required>
+                                    <span class="field-error-msg" id="donorFullNameError">Please enter your full name.</span>
+                                </div>
+
+                                <!-- Email Address -->
+                                <div class="form-group">
+                                    <label for="donorEmail" class="form-label">Email Address <span class="required-indicator">*</span></label>
+                                    <input type="email" id="donorEmail" class="form-control" placeholder="e.g. name@example.com" required>
+                                    <span class="field-error-msg" id="donorEmailError">Please enter a valid email address.</span>
+                                </div>
+
+                                <!-- Phone Number -->
+                                <div class="form-group">
+                                    <label for="donorPhone" class="form-label">Phone Number <span class="required-indicator">*</span></label>
+                                    <input type="tel" id="donorPhone" class="form-control" placeholder="e.g. 9876543210" required>
+                                    <span class="field-helper-text">Used to reach you for urgent matching requests.</span>
+                                    <span class="field-error-msg" id="donorPhoneError">Please enter a valid 10-digit phone number.</span>
+                                </div>
+
+                                <!-- Date of Birth -->
+                                <div class="form-group">
+                                    <label for="donorDob" class="form-label">Date of Birth <span class="required-indicator">*</span></label>
+                                    <input type="date" id="donorDob" class="form-control" required>
+                                    <span class="field-helper-text">Donors must generally be at least 18 years of age.</span>
+                                    <span class="field-error-msg" id="donorDobError">Please provide a valid date of birth (must be 18+ years old).</span>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <!-- Fieldset 2: Blood Group & Donation History -->
+                        <fieldset class="form-section-fieldset">
+                            <div class="form-section-header">
+                                <h2 class="form-section-title">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                                    </svg>
+                                    2. Blood Group & Donation History
+                                </h2>
+                                <p class="form-section-desc">Helps match your profile with compatible patient requests.</p>
+                            </div>
+
+                            <div class="form-grid-2col">
+                                <!-- Blood Group -->
+                                <div class="form-group">
+                                    <label for="donorBloodGroup" class="form-label">Blood Group <span class="required-indicator">*</span></label>
+                                    <select id="donorBloodGroup" class="form-control" required>
+                                        <option value="" disabled selected>Select Blood Group</option>
+                                        <option value="A+">A+</option>
+                                        <option value="A-">A-</option>
+                                        <option value="B+">B+</option>
+                                        <option value="B-">B-</option>
+                                        <option value="AB+">AB+</option>
+                                        <option value="AB-">AB-</option>
+                                        <option value="O+">O+</option>
+                                        <option value="O-">O-</option>
+                                    </select>
+                                    <span class="field-error-msg" id="donorBloodGroupError">Please select your blood group.</span>
+                                </div>
+
+                                <!-- Availability Status -->
+                                <div class="form-group">
+                                    <label for="donorAvailability" class="form-label">Current Availability <span class="required-indicator">*</span></label>
+                                    <select id="donorAvailability" class="form-control" required>
+                                        <option value="Available" selected>Available for Requests</option>
+                                        <option value="Currently Unavailable">Currently Unavailable</option>
+                                    </select>
+                                    <span class="field-helper-text">You can change your availability at any time.</span>
+                                </div>
+
+                                <!-- Last Donation Date -->
+                                <div class="form-group">
+                                    <label for="donorLastDonationDate" class="form-label">Last Blood Donation Date</label>
+                                    <input type="date" id="donorLastDonationDate" class="form-control">
+                                    <span class="field-helper-text">Leave blank if you have never donated before.</span>
+                                    <span class="field-error-msg" id="donorLastDonationDateError">Last donation date cannot be in the future.</span>
+                                </div>
+
+                                <!-- Preferred Contact Method -->
+                                <div class="form-group">
+                                    <label for="donorContactMethod" class="form-label">Preferred Contact Method <span class="required-indicator">*</span></label>
+                                    <select id="donorContactMethod" class="form-control" required>
+                                        <option value="Phone" selected>Phone Call</option>
+                                        <option value="SMS">SMS / Text Message</option>
+                                        <option value="Email">Email Notification</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <!-- Fieldset 3: Location & Radius Preferences -->
+                        <fieldset class="form-section-fieldset">
+                            <div class="form-section-header">
+                                <h2 class="form-section-title">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                        <circle cx="12" cy="10" r="3"></circle>
+                                    </svg>
+                                    3. Location & Travel Preferences
+                                </h2>
+                                <p class="form-section-desc">Privacy Notice: Exact residential street address is not requested.</p>
+                            </div>
+
+                            <div class="form-grid-2col">
+                                <!-- City / Location -->
+                                <div class="form-group">
+                                    <label for="donorCity" class="form-label">City / Locality <span class="required-indicator">*</span></label>
+                                    <input type="text" id="donorCity" class="form-control" placeholder="e.g. Hyderabad, Banjara Hills" required>
+                                    <span class="field-error-msg" id="donorCityError">Please enter your city or general locality.</span>
+                                </div>
+
+                                <!-- Preferred Search Radius -->
+                                <div class="form-group">
+                                    <label for="donorRadius" class="form-label">Preferred Search Radius <span class="required-indicator">*</span></label>
+                                    <select id="donorRadius" class="form-control" required>
+                                        <option value="5 km">5 km</option>
+                                        <option value="10 km">10 km</option>
+                                        <option value="25 km" selected>25 km</option>
+                                        <option value="50 km">50 km</option>
+                                    </select>
+                                    <span class="field-helper-text">Maximum travel distance for donation requests.</span>
+                                </div>
+
+                                <!-- Additional Notes -->
+                                <div class="form-group form-col-full">
+                                    <label for="donorNotes" class="form-label">Additional Notes (Optional)</label>
+                                    <textarea id="donorNotes" class="form-control" placeholder="Any special availability preferences (e.g. available weekends only, morning hours, etc.)."></textarea>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <!-- Fieldset 4: Consent & Acknowledgement -->
+                        <fieldset class="form-section-fieldset">
+                            <div class="form-section-header">
+                                <h2 class="form-section-title">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                    </svg>
+                                    4. Consent & Acknowledgement
+                                </h2>
+                                <p class="form-section-desc">Please review and check the following confirmations.</p>
+                            </div>
+
+                            <div class="consent-container">
+                                <!-- Consent 1 (Required) -->
+                                <label class="checkbox-item" for="consentMedical">
+                                    <input type="checkbox" id="consentMedical" class="checkbox-input" required>
+                                    <span class="checkbox-text">
+                                        <strong>Medical Disclaimer Consent:</strong> I understand that BloodBridge is a discovery tool and does not determine medical eligibility for blood donation. Final suitability will be verified by certified clinicians. <span class="required-indicator">*</span>
+                                    </span>
+                                </label>
+                                <span class="field-error-msg" id="consentMedicalError">You must agree to the medical disclaimer to register.</span>
+
+                                <!-- Consent 2 (Required) -->
+                                <label class="checkbox-item" for="consentContact">
+                                    <input type="checkbox" id="consentContact" class="checkbox-input" required>
+                                    <span class="checkbox-text">
+                                        <strong>Contact Consent:</strong> I agree to receive urgent alerts and notifications when nearby requests match my blood group and availability. <span class="required-indicator">*</span>
+                                    </span>
+                                </label>
+                                <span class="field-error-msg" id="consentContactError">You must consent to receiving relevant blood request alerts.</span>
+                            </div>
+                        </fieldset>
+
+                        <!-- Submit Button -->
+                        <div style="margin-top: 2rem;">
+                            <button type="submit" class="btn btn-primary btn-lg btn-full" id="btnSubmitDonor">
+                                Create Donor Profile
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Submission Success Card (Hidden initially, shown upon valid client validation) -->
+                <div class="submission-success-card" id="donorSuccessCard" role="region" aria-live="polite">
+                    <div class="success-icon-badge">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </div>
+
+                    <h2 class="success-card-title">Donor Profile Form Completed</h2>
+                    <p class="success-card-lead">
+                        Thank you for completing the voluntary blood donor profile. Your details have been validated successfully on the client interface.
+                    </p>
+
+                    <!-- Prototype Notice -->
+                    <div class="prototype-phase-notice">
+                        <svg class="prototype-notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="16" x2="12" y2="12"></line>
+                            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                        </svg>
+                        <div class="prototype-notice-text">
+                            <strong>Development Notice:</strong> Backend registration and database persistence will be connected in a later phase (Spring Boot + MySQL). No real account has been created on the live server yet.
+                        </div>
+                    </div>
+
+                    <!-- Submitted Summary Preview -->
+                    <div class="summary-details-box">
+                        <div class="summary-details-title">Validated Profile Summary</div>
+                        <div class="summary-grid" id="donorSummaryGrid">
+                            <!-- Populated dynamically via JS -->
+                        </div>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="success-actions">
+                        <button type="button" class="btn btn-secondary" id="btnResetDonorForm">Register Another Profile</button>
+                        <a href="index.html" class="btn btn-primary">Return to Homepage</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- =====================================================================
+         4. Footer
+         ===================================================================== -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Brand Column -->
+                <div class="footer-brand">
+                    <a href="index.html" class="brand-logo">
+                        <svg class="brand-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                        </svg>
+                        <span class="brand-text">Blood<span>Bridge</span></span>
+                    </a>
+                    <p class="footer-tagline">"Connecting People. Saving Lives."</p>
+                    <p class="footer-summary">
+                        A real-world prototype platform connecting voluntary donors, patient attenders, and certified blood banks through location-aware discovery.
+                    </p>
+                </div>
+
+                <!-- Column 1: Navigation -->
+                <div>
+                    <h4 class="footer-col-title">Quick Links</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="index.html#hero" class="footer-link">Home</a></li>
+                        <li><a href="request-blood.html" class="footer-link">Find Blood</a></li>
+                        <li><a href="index.html#how-it-works" class="footer-link">How It Works</a></li>
+                        <li><a href="index.html#trust" class="footer-link">Trust & Safety</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 2: Ecosystem -->
+                <div>
+                    <h4 class="footer-col-title">Portals</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="donor-register.html" class="footer-link">Donor Registration</a></li>
+                        <li><a href="request-blood.html" class="footer-link">Blood Request</a></li>
+                        <li><a href="index.html#roles" class="footer-link">Blood Bank Directory</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Legal & Standards -->
+                <div>
+                    <h4 class="footer-col-title">Project Standards</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="../docs/architecture/ARCHITECTURE.md" class="footer-link">System Architecture</a></li>
+                        <li><a href="../docs/database/DATABASE_DESIGN.md" class="footer-link">Database Schema</a></li>
+                        <li><a href="../docs/api/API_SPEC.md" class="footer-link">API Specification</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div>&copy; 2026 BloodBridge. All rights reserved.</div>
+                <div class="footer-legal-notice">
+                    Medical Disclaimer: BloodBridge facilitates discovery and does not make clinical transfusion determinations.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Placeholder Modal -->
+    <div class="modal-overlay" id="infoModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-dialog">
+            <button type="button" class="modal-close-btn" id="modalCloseBtn" aria-label="Close modal">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="modal-header-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                </svg>
+            </div>
+            <h3 class="modal-title" id="modalTitle">Feature Notice</h3>
+            <p class="modal-body-text" id="modalDescription"></p>
+            <button type="button" class="btn btn-primary btn-full" id="modalConfirmBtn">Got it</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+</body>
+</html>

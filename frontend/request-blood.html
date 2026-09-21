@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create a structured blood or component request on BloodBridge to discover nearby compatible donors and verified blood banks.">
+    <title>Request Blood — BloodBridge</title>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+    <!-- =====================================================================
+         1. Navigation Header
+         ===================================================================== -->
+    <header class="site-header" id="siteHeader">
+        <div class="container nav-container">
+            <!-- Brand Logo -->
+            <a href="index.html" class="brand-logo" aria-label="BloodBridge Home">
+                <svg class="brand-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                </svg>
+                <span class="brand-text">Blood<span>Bridge</span></span>
+            </a>
+
+            <!-- Navigation Links & Single Set of Auth Buttons -->
+            <nav class="nav-menu" id="navMenu" aria-label="Main Navigation">
+                <a href="index.html#hero" class="nav-link">Home</a>
+                <a href="request-blood.html" class="nav-link active" style="color: var(--primary); font-weight: 700;">Find Blood</a>
+                <a href="donor-register.html" class="nav-link">Donate Blood</a>
+                <a href="index.html#roles" class="nav-link">Blood Banks</a>
+                <a href="index.html#how-it-works" class="nav-link">How It Works</a>
+                <a href="index.html#trust" class="nav-link">Trust & Safety</a>
+
+                <div class="nav-actions">
+                    <button type="button" class="btn btn-secondary btn-sm" data-action-placeholder="login">Login</button>
+                    <button type="button" class="btn btn-primary btn-sm" data-action-placeholder="register">Register</button>
+                </div>
+            </nav>
+
+            <!-- Mobile Hamburger Toggle -->
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation Menu" aria-expanded="false" aria-controls="navMenu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- =================================================================
+             2. Page Header & Breadcrumb
+             ================================================================= -->
+        <section class="page-header-section">
+            <div class="container form-page-container">
+                <nav class="breadcrumb-nav" aria-label="Breadcrumbs">
+                    <a href="index.html" class="breadcrumb-link">Home</a>
+                    <span class="breadcrumb-separator" aria-hidden="true">/</span>
+                    <span class="breadcrumb-current" aria-current="page">Request Blood</span>
+                </nav>
+
+                <div class="section-header" style="text-align: left; margin-bottom: 0;">
+                    <span class="section-tag">Blood & Component Request</span>
+                    <h1 class="section-title" style="font-size: 2.25rem;">Request Blood</h1>
+                    <p class="section-subtitle">
+                        Provide the details needed to help BloodBridge identify relevant potential donors and blood-bank resources.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================================
+             3. Blood Request Form Section
+             ================================================================= -->
+        <section class="section" style="padding-top: 3rem;">
+            <div class="container form-page-container">
+
+                <!-- Healthcare Disclaimer Notice -->
+                <div class="form-notice-box" role="note">
+                    <svg class="form-notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="8" x2="12" y2="12"></line>
+                        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                    <div class="form-notice-content">
+                        <strong>Clinical Disclaimer:</strong> BloodBridge facilitates discovery between patients, voluntary donors, and blood banks. Cross-matching, compatibility tests, and transfusion safety approvals must always be conducted by hospital medical staff.
+                    </div>
+                </div>
+
+                <!-- Request Form Card -->
+                <div class="form-card" id="requestFormCard">
+                    <form id="bloodRequestForm" novalidate>
+                        
+                        <!-- Fieldset 1: Requester & Contact Details -->
+                        <fieldset class="form-section-fieldset">
+                            <div class="form-section-header">
+                                <h2 class="form-section-title">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="12" cy="7" r="4"></circle>
+                                    </svg>
+                                    1. Requester / Attender Information
+                                </h2>
+                                <p class="form-section-desc">Details of the person coordinating this blood request.</p>
+                            </div>
+
+                            <div class="form-grid-3col">
+                                <!-- Requester Name -->
+                                <div class="form-group">
+                                    <label for="requesterName" class="form-label">Requester Name <span class="required-indicator">*</span></label>
+                                    <input type="text" id="requesterName" class="form-control" placeholder="Attender / Patient Name" required>
+                                    <span class="field-error-msg" id="requesterNameError">Please enter the requester's name.</span>
+                                </div>
+
+                                <!-- Contact Number -->
+                                <div class="form-group">
+                                    <label for="requesterPhone" class="form-label">Contact Number <span class="required-indicator">*</span></label>
+                                    <input type="tel" id="requesterPhone" class="form-control" placeholder="e.g. 9876543210" required>
+                                    <span class="field-error-msg" id="requesterPhoneError">Please enter a valid 10-digit contact number.</span>
+                                </div>
+
+                                <!-- Email Address -->
+                                <div class="form-group">
+                                    <label for="requesterEmail" class="form-label">Email Address <span class="required-indicator">*</span></label>
+                                    <input type="email" id="requesterEmail" class="form-control" placeholder="e.g. attender@example.com" required>
+                                    <span class="field-error-msg" id="requesterEmailError">Please enter a valid email address.</span>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <!-- Fieldset 2: Blood Requirement Details -->
+                        <fieldset class="form-section-fieldset">
+                            <div class="form-section-header">
+                                <h2 class="form-section-title">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                                    </svg>
+                                    2. Blood & Component Requirement
+                                </h2>
+                                <p class="form-section-desc">Specify the exact biological group, component type, and required quantity.</p>
+                            </div>
+
+                            <div class="form-grid-2col">
+                                <!-- Blood Group -->
+                                <div class="form-group">
+                                    <label for="requestBloodGroup" class="form-label">Blood Group Required <span class="required-indicator">*</span></label>
+                                    <select id="requestBloodGroup" class="form-control" required>
+                                        <option value="" disabled selected>Select Blood Group</option>
+                                        <option value="A+">A+</option>
+                                        <option value="A-">A-</option>
+                                        <option value="B+">B+</option>
+                                        <option value="B-">B-</option>
+                                        <option value="AB+">AB+</option>
+                                        <option value="AB-">AB-</option>
+                                        <option value="O+">O+</option>
+                                        <option value="O-">O-</option>
+                                    </select>
+                                    <span class="field-error-msg" id="requestBloodGroupError">Please select the required blood group.</span>
+                                </div>
+
+                                <!-- Blood Component -->
+                                <div class="form-group">
+                                    <label for="requestComponent" class="form-label">Blood Component <span class="required-indicator">*</span></label>
+                                    <select id="requestComponent" class="form-control" required>
+                                        <option value="" disabled selected>Select Component</option>
+                                        <option value="Whole Blood">Whole Blood</option>
+                                        <option value="Red Blood Cells">Red Blood Cells (PRBC)</option>
+                                        <option value="Plasma">Fresh Frozen Plasma (FFP)</option>
+                                        <option value="Platelets">Platelets / RDP / SDP</option>
+                                    </select>
+                                    <span class="field-error-msg" id="requestComponentError">Please select the component type.</span>
+                                </div>
+
+                                <!-- Units Required -->
+                                <div class="form-group">
+                                    <label for="requestUnits" class="form-label">Units Required <span class="required-indicator">*</span></label>
+                                    <input type="number" id="requestUnits" class="form-control" min="1" max="20" placeholder="e.g. 2" required>
+                                    <span class="field-helper-text">Minimum quantity is 1 unit.</span>
+                                    <span class="field-error-msg" id="requestUnitsError">Please enter a valid unit quantity (minimum 1).</span>
+                                </div>
+
+                                <!-- Urgency Level -->
+                                <div class="form-group">
+                                    <label for="requestUrgency" class="form-label">Urgency Level <span class="required-indicator">*</span></label>
+                                    <select id="requestUrgency" class="form-control" required>
+                                        <option value="Normal">Normal (Within 24-48 hours)</option>
+                                        <option value="Urgent" selected>Urgent (Within 6-12 hours)</option>
+                                        <option value="Emergency">Emergency (Immediate / Surgery)</option>
+                                    </select>
+                                    <span class="field-error-msg" id="requestUrgencyError">Please select the urgency classification.</span>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <!-- Fieldset 3: Hospital & Timing Information -->
+                        <fieldset class="form-section-fieldset">
+                            <div class="form-section-header">
+                                <h2 class="form-section-title">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                    </svg>
+                                    3. Hospital & Timing Details
+                                </h2>
+                                <p class="form-section-desc">Location and schedule where the blood/component is needed.</p>
+                            </div>
+
+                            <div class="form-grid-2col">
+                                <!-- Hospital / Care Location -->
+                                <div class="form-group">
+                                    <label for="hospitalName" class="form-label">Hospital / Care Facility <span class="required-indicator">*</span></label>
+                                    <input type="text" id="hospitalName" class="form-control" placeholder="e.g. Apollo Hospital, Jubilee Hills" required>
+                                    <span class="field-error-msg" id="hospitalNameError">Please enter the hospital or treatment facility.</span>
+                                </div>
+
+                                <!-- City / Location -->
+                                <div class="form-group">
+                                    <label for="requestCity" class="form-label">City / Locality <span class="required-indicator">*</span></label>
+                                    <input type="text" id="requestCity" class="form-control" placeholder="e.g. Hyderabad, Telangana" required>
+                                    <span class="field-error-msg" id="requestCityError">Please enter the city where blood is needed.</span>
+                                </div>
+
+                                <!-- Required Date -->
+                                <div class="form-group">
+                                    <label for="requiredDate" class="form-label">Required By Date <span class="required-indicator">*</span></label>
+                                    <input type="date" id="requiredDate" class="form-control" required>
+                                    <span class="field-helper-text">Target date for transfusion or surgery.</span>
+                                    <span class="field-error-msg" id="requiredDateError">Please provide a valid required date (today or future).</span>
+                                </div>
+
+                                <!-- Patient Name / Case Info -->
+                                <div class="form-group">
+                                    <label for="patientInfo" class="form-label">Patient Name / IP No. (Optional)</label>
+                                    <input type="text" id="patientInfo" class="form-control" placeholder="e.g. Patient Reference (Optional)">
+                                </div>
+
+                                <!-- Additional Information -->
+                                <div class="form-group form-col-full">
+                                    <label for="requestNotes" class="form-label">Additional Instructions / Notes (Optional)</label>
+                                    <textarea id="requestNotes" class="form-control" placeholder="Mention specific ward, doctor recommendations, cross-match status, or emergency contact preferences."></textarea>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <!-- Submit Button -->
+                        <div style="margin-top: 2rem;">
+                            <button type="submit" class="btn btn-primary btn-lg btn-full" id="btnSubmitRequest">
+                                Create Blood Request
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Submission Success Card (Hidden initially, shown upon valid client validation) -->
+                <div class="submission-success-card" id="requestSuccessCard" role="region" aria-live="polite">
+                    <div class="success-icon-badge">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </div>
+
+                    <h2 class="success-card-title">Blood Request Form Completed</h2>
+                    <p class="success-card-lead">
+                        Your blood request parameters have been validated on the client interface.
+                    </p>
+
+                    <!-- Prototype Notice -->
+                    <div class="prototype-phase-notice">
+                        <svg class="prototype-notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="16" x2="12" y2="12"></line>
+                            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                        </svg>
+                        <div class="prototype-notice-text">
+                            <strong>Development Notice:</strong> Backend request processing, algorithmic donor matching, and notification dispatch will be connected in a later phase (Spring Boot + MySQL). No real alerts have been dispatched on the live network yet.
+                        </div>
+                    </div>
+
+                    <!-- Submitted Summary Preview -->
+                    <div class="summary-details-box">
+                        <div class="summary-details-title">Validated Request Summary</div>
+                        <div class="summary-grid" id="requestSummaryGrid">
+                            <!-- Populated dynamically via JS -->
+                        </div>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="success-actions">
+                        <button type="button" class="btn btn-secondary" id="btnResetRequestForm">Create Another Request</button>
+                        <a href="index.html" class="btn btn-primary">Return to Homepage</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- =====================================================================
+         4. Footer
+         ===================================================================== -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Brand Column -->
+                <div class="footer-brand">
+                    <a href="index.html" class="brand-logo">
+                        <svg class="brand-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                        </svg>
+                        <span class="brand-text">Blood<span>Bridge</span></span>
+                    </a>
+                    <p class="footer-tagline">"Connecting People. Saving Lives."</p>
+                    <p class="footer-summary">
+                        A real-world prototype platform connecting voluntary donors, patient attenders, and certified blood banks through location-aware discovery.
+                    </p>
+                </div>
+
+                <!-- Column 1: Navigation -->
+                <div>
+                    <h4 class="footer-col-title">Quick Links</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="index.html#hero" class="footer-link">Home</a></li>
+                        <li><a href="request-blood.html" class="footer-link">Find Blood</a></li>
+                        <li><a href="index.html#how-it-works" class="footer-link">How It Works</a></li>
+                        <li><a href="index.html#trust" class="footer-link">Trust & Safety</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 2: Ecosystem -->
+                <div>
+                    <h4 class="footer-col-title">Portals</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="donor-register.html" class="footer-link">Donor Registration</a></li>
+                        <li><a href="request-blood.html" class="footer-link">Blood Request</a></li>
+                        <li><a href="index.html#roles" class="footer-link">Blood Bank Directory</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Legal & Standards -->
+                <div>
+                    <h4 class="footer-col-title">Project Standards</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="../docs/architecture/ARCHITECTURE.md" class="footer-link">System Architecture</a></li>
+                        <li><a href="../docs/database/DATABASE_DESIGN.md" class="footer-link">Database Schema</a></li>
+                        <li><a href="../docs/api/API_SPEC.md" class="footer-link">API Specification</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div>&copy; 2026 BloodBridge. All rights reserved.</div>
+                <div class="footer-legal-notice">
+                    Medical Disclaimer: BloodBridge facilitates discovery and does not make clinical transfusion determinations.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Placeholder Modal -->
+    <div class="modal-overlay" id="infoModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-dialog">
+            <button type="button" class="modal-close-btn" id="modalCloseBtn" aria-label="Close modal">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="modal-header-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                </svg>
+            </div>
+            <h3 class="modal-title" id="modalTitle">Feature Notice</h3>
+            <p class="modal-body-text" id="modalDescription"></p>
+            <button type="button" class="btn btn-primary btn-full" id="modalConfirmBtn">Got it</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+</body>
+</html>
