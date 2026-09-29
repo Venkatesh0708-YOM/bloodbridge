@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sign in to your BloodBridge account to manage blood requests, donor availability, and healthcare coordination.">
+    <title>Sign In — BloodBridge</title>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- Self-contained Auth Styles -->
+    <style>
+        .auth-page-section {
+            padding: 3.5rem 0 5rem;
+            min-height: calc(100vh - 4.5rem - 300px);
+            display: flex;
+            align-items: center;
+        }
+
+        .auth-container {
+            max-width: 500px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .auth-card {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-xl);
+            padding: 2.5rem 2.25rem;
+        }
+
+        .password-input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .password-input-wrapper .form-control {
+            padding-right: 3rem;
+        }
+
+        .password-toggle-btn {
+            position: absolute;
+            right: 0.75rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-muted);
+            padding: 0.35rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius-sm);
+            transition: color var(--transition-fast);
+        }
+
+        .password-toggle-btn:hover {
+            color: var(--text-primary);
+        }
+
+        .password-toggle-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .auth-options-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 1.25rem 0 1.5rem;
+            font-size: 0.84375rem;
+        }
+
+        .auth-link {
+            color: var(--primary);
+            font-weight: 600;
+            transition: color var(--transition-fast);
+        }
+
+        .auth-link:hover {
+            color: var(--primary-hover);
+            text-decoration: underline;
+        }
+
+        .auth-footer-nav {
+            text-align: center;
+            margin-top: 1.75rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 480px) {
+            .auth-card {
+                padding: 1.75rem 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- =====================================================================
+         1. Navigation Header
+         ===================================================================== -->
+    <header class="site-header" id="siteHeader">
+        <div class="container nav-container">
+            <!-- Brand Logo -->
+            <a href="index.html" class="brand-logo" aria-label="BloodBridge Home">
+                <svg class="brand-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                </svg>
+                <span class="brand-text">Blood<span>Bridge</span></span>
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="nav-menu" id="navMenu" aria-label="Main Navigation">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="request-blood.html" class="nav-link">Find Blood</a>
+                <a href="donor-register.html" class="nav-link">Donate Blood</a>
+                <a href="index.html#roles" class="nav-link">Blood Banks</a>
+                <a href="index.html#how-it-works" class="nav-link">How It Works</a>
+                <a href="index.html#trust" class="nav-link">Trust & Safety</a>
+
+                <div class="nav-actions">
+                    <a href="login.html" class="btn btn-secondary btn-sm">Login</a>
+                    <a href="register.html" class="btn btn-primary btn-sm">Register</a>
+                </div>
+            </nav>
+
+            <!-- Mobile Hamburger Toggle -->
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation Menu" aria-expanded="false" aria-controls="navMenu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- =================================================================
+             2. Page Header & Breadcrumb
+             ================================================================= -->
+        <section class="page-header-section">
+            <div class="container auth-container">
+                <nav class="breadcrumb-nav" aria-label="Breadcrumbs">
+                    <a href="index.html" class="breadcrumb-link">Home</a>
+                    <span class="breadcrumb-separator" aria-hidden="true">/</span>
+                    <span class="breadcrumb-current" aria-current="page">Login</span>
+                </nav>
+
+                <div class="section-header" style="text-align: left; margin-bottom: 0;">
+                    <span class="section-tag">Authentication Portal</span>
+                    <h1 class="section-title" style="font-size: 2.15rem;">Welcome Back</h1>
+                    <p class="section-subtitle">
+                        Sign in to continue to your BloodBridge account.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================================
+             3. Login Form Section
+             ================================================================= -->
+        <section class="auth-page-section">
+            <div class="container auth-container">
+
+                <!-- Prototype Notice Banner -->
+                <div class="form-notice-box" role="note">
+                    <svg class="form-notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="8" x2="12" y2="12"></line>
+                        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                    <div class="form-notice-content">
+                        <strong>Prototype Notice:</strong> Real authentication will be connected in a later phase. You can submit the form to test client validation or jump straight to the <a href="donor-dashboard.html" style="color: #1e40af; text-decoration: underline; font-weight: 700;">Demo Donor Dashboard</a>.
+                    </div>
+                </div>
+
+                <!-- Login Feedback Banner -->
+                <div id="loginFeedbackBanner" class="feedback-banner" role="status" aria-live="polite" style="display: none; margin-bottom: 1.5rem;"></div>
+
+                <!-- Login Card -->
+                <div class="auth-card" id="loginCard">
+                    <form id="loginForm" novalidate>
+                        
+                        <!-- Email Address -->
+                        <div class="form-group">
+                            <label for="loginEmail" class="form-label">Email Address <span class="required-indicator">*</span></label>
+                            <input type="email" id="loginEmail" class="form-control" placeholder="e.g. name@example.com" required>
+                            <span class="field-error-msg" id="loginEmailError">Please enter a valid email address.</span>
+                        </div>
+
+                        <!-- Password -->
+                        <div class="form-group">
+                            <label for="loginPassword" class="form-label">Password <span class="required-indicator">*</span></label>
+                            <div class="password-input-wrapper">
+                                <input type="password" id="loginPassword" class="form-control" placeholder="Enter your password" required>
+                                <button type="button" class="password-toggle-btn" data-target="loginPassword" aria-label="Show password">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
+                                </button>
+                            </div>
+                            <span class="field-error-msg" id="loginPasswordError">Please enter your password.</span>
+                        </div>
+
+                        <!-- Options Row (Remember Me & Forgot Password) -->
+                        <div class="auth-options-row">
+                            <label class="checkbox-item" for="rememberMe" style="font-size: 0.84375rem;">
+                                <input type="checkbox" id="rememberMe" class="checkbox-input" style="width: 1rem; height: 1rem; margin-top: 0.1rem;">
+                                <span class="checkbox-text">Remember me</span>
+                            </label>
+                            <button type="button" class="auth-link" style="background: none; border: none; padding: 0; cursor: pointer;" id="btnForgotPassword">
+                                Forgot password?
+                            </button>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-primary btn-lg btn-full" id="btnSubmitLogin">
+                            Sign In
+                        </button>
+
+                        <!-- Demo Dashboard Shortcut -->
+                        <div style="margin-top: 1rem; text-align: center;">
+                            <a href="donor-dashboard.html" class="btn btn-outline btn-full">
+                                View Demo Donor Dashboard &rarr;
+                            </a>
+                        </div>
+
+                        <div class="auth-footer-nav">
+                            Don't have an account? <a href="register.html" class="auth-link">Create Account</a>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- =====================================================================
+         4. Footer
+         ===================================================================== -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Brand Column -->
+                <div class="footer-brand">
+                    <a href="index.html" class="brand-logo">
+                        <svg class="brand-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                        </svg>
+                        <span class="brand-text">Blood<span>Bridge</span></span>
+                    </a>
+                    <p class="footer-tagline">"Connecting People. Saving Lives."</p>
+                    <p class="footer-summary">
+                        A real-world prototype platform connecting voluntary donors, patient attenders, and certified blood banks through location-aware discovery.
+                    </p>
+                </div>
+
+                <!-- Column 1: Navigation -->
+                <div>
+                    <h4 class="footer-col-title">Quick Links</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="index.html#hero" class="footer-link">Home</a></li>
+                        <li><a href="request-blood.html" class="footer-link">Find Blood</a></li>
+                        <li><a href="index.html#how-it-works" class="footer-link">How It Works</a></li>
+                        <li><a href="index.html#trust" class="footer-link">Trust & Safety</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 2: Ecosystem -->
+                <div>
+                    <h4 class="footer-col-title">Portals</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="donor-register.html" class="footer-link">Donor Registration</a></li>
+                        <li><a href="request-blood.html" class="footer-link">Blood Request</a></li>
+                        <li><a href="donor-dashboard.html" class="footer-link">Demo Dashboard</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Legal & Standards -->
+                <div>
+                    <h4 class="footer-col-title">Project Standards</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="../docs/architecture/ARCHITECTURE.md" class="footer-link">System Architecture</a></li>
+                        <li><a href="../docs/database/DATABASE_DESIGN.md" class="footer-link">Database Schema</a></li>
+                        <li><a href="../docs/api/API_SPEC.md" class="footer-link">API Specification</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div>&copy; 2026 BloodBridge. All rights reserved.</div>
+                <div class="footer-legal-notice">
+                    Medical Disclaimer: BloodBridge facilitates discovery and does not make clinical transfusion determinations.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Placeholder Modal -->
+    <div class="modal-overlay" id="infoModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-dialog">
+            <button type="button" class="modal-close-btn" id="modalCloseBtn" aria-label="Close modal">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="modal-header-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                </svg>
+            </div>
+            <h3 class="modal-title" id="modalTitle">Feature Notice</h3>
+            <p class="modal-body-text" id="modalDescription"></p>
+            <button type="button" class="btn btn-primary btn-full" id="modalConfirmBtn">Got it</button>
+        </div>
+    </div>
+
+    <!-- Baseline Scripts -->
+    <script src="js/main.js"></script>
+
+    <!-- Self-Contained Page Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Password Visibility Toggle
+            const toggleButtons = document.querySelectorAll('.password-toggle-btn');
+            toggleButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const targetId = btn.getAttribute('data-target');
+                    const targetInput = document.getElementById(targetId);
+                    if (!targetInput) return;
+
+                    const isPassword = targetInput.type === 'password';
+                    targetInput.type = isPassword ? 'text' : 'password';
+                    btn.setAttribute('aria-label', isPassword ? 'Hide password' : 'Show password');
+
+                    if (isPassword) {
+                        btn.innerHTML = `
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                                <line x1="1" y1="1" x2="23" y2="23"></line>
+                            </svg>
+                        `;
+                    } else {
+                        btn.innerHTML = `
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        `;
+                    }
+                });
+            });
+
+            // Login Form Validation & Feedback
+            const loginForm = document.getElementById('loginForm');
+            const loginFeedbackBanner = document.getElementById('loginFeedbackBanner');
+
+            if (loginForm) {
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                loginForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    let isValid = true;
+                    let firstInvalidField = null;
+
+                    function validateField(inputEl, errorEl, condition) {
+                        if (!condition) {
+                            inputEl.classList.add('is-invalid');
+                            inputEl.classList.remove('is-valid');
+                            if (errorEl) errorEl.classList.add('visible');
+                            if (!firstInvalidField) firstInvalidField = inputEl;
+                            isValid = false;
+                        } else {
+                            inputEl.classList.remove('is-invalid');
+                            inputEl.classList.add('is-valid');
+                            if (errorEl) errorEl.classList.remove('visible');
+                        }
+                    }
+
+                    const email = document.getElementById('loginEmail');
+                    const emailError = document.getElementById('loginEmailError');
+                    validateField(email, emailError, emailPattern.test(email.value.trim()));
+
+                    const password = document.getElementById('loginPassword');
+                    const passwordError = document.getElementById('loginPasswordError');
+                    validateField(password, passwordError, password.value.length >= 1);
+
+                    if (!isValid) {
+                        if (firstInvalidField) firstInvalidField.focus();
+                        return;
+                    }
+
+                    if (loginFeedbackBanner) {
+                        loginFeedbackBanner.className = 'feedback-banner info';
+                        loginFeedbackBanner.style.display = 'flex';
+                        loginFeedbackBanner.innerHTML = `
+                            <div>
+                                <strong>Demo Login Notice:</strong> Form submitted successfully for demonstration. Real authentication (Spring Security + JWT) will be connected in a later phase.
+                                <div style="margin-top: 0.5rem;">
+                                    <a href="donor-dashboard.html" class="btn btn-primary btn-sm">Explore Demo Donor Dashboard &rarr;</a>
+                                </div>
+                            </div>
+                        `;
+                        loginFeedbackBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    }
+                });
+            }
+
+            // Forgot Password Modal
+            const btnForgotPassword = document.getElementById('btnForgotPassword');
+            const modalOverlay = document.getElementById('infoModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDescription = document.getElementById('modalDescription');
+
+            if (btnForgotPassword && modalOverlay && modalTitle && modalDescription) {
+                btnForgotPassword.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    modalTitle.textContent = 'Password Recovery Portal';
+                    modalDescription.textContent = 'Password reset workflows (email verification tokens) will be connected during backend security development. This is a prototype placeholder.';
+                    modalOverlay.classList.add('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

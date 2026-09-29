@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BloodBridge Demo Donor Dashboard — Manage availability, view sample blood requests, and review donor profile metrics.">
+    <title>Donor Dashboard — BloodBridge</title>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- Self-contained Dashboard Styles -->
+    <style>
+        .dashboard-page-section {
+            padding: 2.5rem 0 5rem;
+            background-color: var(--bg-main);
+        }
+
+        .dashboard-demo-banner {
+            background-color: #fef3c7;
+            border: 1px solid #fde68a;
+            border-radius: var(--radius-md);
+            padding: 1rem 1.25rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .dashboard-demo-banner-content {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.875rem;
+            color: #92400e;
+            font-weight: 600;
+        }
+
+        .dashboard-demo-banner-content svg {
+            width: 22px;
+            height: 22px;
+            flex-shrink: 0;
+            color: #d97706;
+        }
+
+        .dashboard-header-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .donor-welcome-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            line-height: 1.2;
+        }
+
+        .donor-welcome-sub {
+            font-size: 0.9375rem;
+            color: var(--text-muted);
+        }
+
+        .dashboard-user-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            background-color: var(--bg-surface);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-full);
+            border: 1px solid var(--border-color);
+        }
+
+        .avatar-circle {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: var(--primary-light);
+            color: var(--primary);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+        }
+
+        .dashboard-grid-main {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        .dashboard-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .dashboard-stat-card {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.25rem 1rem;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        .stat-card-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .stat-card-value {
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            line-height: 1.2;
+        }
+
+        .stat-card-meta {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .dashboard-card-section {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            padding: 1.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .dashboard-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.85rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .dashboard-card-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .dashboard-requests-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .request-item-dashboard {
+            background-color: var(--bg-main);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+            transition: transform var(--transition-fast);
+        }
+
+        .request-item-dashboard:hover {
+            transform: translateY(-2px);
+            border-color: var(--border-hover);
+        }
+
+        .request-item-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .request-item-details h4 {
+            font-size: 0.9375rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.2rem;
+        }
+
+        .request-item-details p {
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+        }
+
+        .dashboard-timeline-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.15rem;
+        }
+
+        .timeline-entry {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.85rem;
+            position: relative;
+        }
+
+        .timeline-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            margin-top: 0.35rem;
+            flex-shrink: 0;
+        }
+
+        .timeline-entry-content {
+            font-size: 0.84375rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        .timeline-entry-content strong {
+            color: var(--text-primary);
+            display: block;
+        }
+
+        .timeline-entry-time {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .quick-actions-card-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .quick-action-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.85rem 1.15rem;
+            background-color: var(--bg-main);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            transition: all var(--transition-fast);
+        }
+
+        .quick-action-btn:hover {
+            background-color: var(--primary-light);
+            border-color: var(--primary-subtle);
+            color: var(--primary);
+            transform: translateX(3px);
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-grid-main {
+                grid-template-columns: 1fr;
+            }
+
+            .dashboard-stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .dashboard-header-bar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .dashboard-stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .request-item-dashboard {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .request-item-dashboard .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- =====================================================================
+         1. Navigation Header
+         ===================================================================== -->
+    <header class="site-header" id="siteHeader">
+        <div class="container nav-container">
+            <!-- Brand Logo -->
+            <a href="index.html" class="brand-logo" aria-label="BloodBridge Home">
+                <svg class="brand-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                </svg>
+                <span class="brand-text">Blood<span>Bridge</span></span>
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="nav-menu" id="navMenu" aria-label="Main Navigation">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="request-blood.html" class="nav-link">Find Blood</a>
+                <a href="donor-register.html" class="nav-link">Donate Blood</a>
+                <a href="index.html#roles" class="nav-link">Blood Banks</a>
+                <a href="donor-dashboard.html" class="nav-link active" style="color: var(--primary); font-weight: 700;">Dashboard</a>
+
+                <div class="nav-actions">
+                    <button type="button" class="btn btn-secondary btn-sm" id="btnLogout">Sign Out (Demo)</button>
+                </div>
+            </nav>
+
+            <!-- Mobile Hamburger Toggle -->
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation Menu" aria-expanded="false" aria-controls="navMenu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- =================================================================
+             2. Dashboard Main Section
+             ================================================================= -->
+        <section class="dashboard-page-section">
+            <div class="container">
+
+                <!-- Prominent Prototype Notice Banner -->
+                <div class="dashboard-demo-banner" role="status">
+                    <div class="dashboard-demo-banner-content">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                            <line x1="12" y1="9" x2="12" y2="13"></line>
+                            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                        </svg>
+                        <div>
+                            <strong>Demo Donor Dashboard:</strong> Sample data shown for prototype demonstration. Live donor records, real GPS matching, and database synchronization will be connected in a later sprint.
+                        </div>
+                    </div>
+                    <span class="badge" style="background-color: #fef08a; color: #854d0e; font-weight: 700;">PROTOTYPE MODE</span>
+                </div>
+
+                <!-- Header Bar -->
+                <div class="dashboard-header-bar">
+                    <div>
+                        <h1 class="donor-welcome-title">Welcome back, Demo Donor</h1>
+                        <p class="donor-welcome-sub">O+ Voluntary Blood Donor &bull; Registered Member</p>
+                    </div>
+
+                    <div class="dashboard-user-badge">
+                        <div class="avatar-circle">DD</div>
+                        <div>
+                            <div style="font-size: 0.875rem; font-weight: 700; color: var(--text-primary);">Demo Donor</div>
+                            <div style="font-size: 0.75rem; color: var(--text-muted);">demo.donor@example.com</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Stats Grid -->
+                <div class="dashboard-stats-grid">
+                    <!-- Stat 1: Blood Group -->
+                    <div class="dashboard-stat-card">
+                        <span class="stat-card-label">Blood Group</span>
+                        <div class="stat-card-value" style="color: var(--primary);">O+</div>
+                        <span class="stat-card-meta">Universal RBC Match for O+, A+, B+, AB+</span>
+                    </div>
+
+                    <!-- Stat 2: Availability -->
+                    <div class="dashboard-stat-card">
+                        <span class="stat-card-label">Current Status</span>
+                        <div class="stat-card-value" id="availabilityText" style="color: var(--success-text);">Active</div>
+                        <span class="stat-card-meta">Visible to urgent searches</span>
+                    </div>
+
+                    <!-- Stat 3: Last Donation -->
+                    <div class="dashboard-stat-card">
+                        <span class="stat-card-label">Last Donation</span>
+                        <div class="stat-card-value" style="font-size: 1.15rem;">14 Jan 2026</div>
+                        <span class="stat-card-meta" style="color: var(--success-text); font-weight: 600;">Eligible to donate</span>
+                    </div>
+
+                    <!-- Stat 4: Preferred Radius -->
+                    <div class="dashboard-stat-card">
+                        <span class="stat-card-label">Search Radius</span>
+                        <div class="stat-card-value">25 km</div>
+                        <span class="stat-card-meta">Sample City / Hyderabad</span>
+                    </div>
+                </div>
+
+                <!-- Interactive Notice for Demo Actions -->
+                <div id="dashboardNoticeBanner" class="feedback-banner info" style="display: none; margin-bottom: 2rem;" role="status"></div>
+
+                <!-- Main Layout Grid -->
+                <div class="dashboard-grid-main">
+                    
+                    <!-- Left Column: Availability Control & Relevant Requests -->
+                    <div>
+                        <!-- Availability Management Card -->
+                        <div class="dashboard-card-section">
+                            <div class="dashboard-card-header">
+                                <h2 class="dashboard-card-title">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                    </svg>
+                                    Donor Availability Control
+                                </h2>
+                                <span class="badge" id="donorStatusBadge" data-status="available" style="background-color: var(--success-bg); color: var(--success-text); border: 1px solid var(--success-border);">
+                                    Available for Requests
+                                </span>
+                            </div>
+
+                            <p style="font-size: 0.9375rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.25rem;">
+                                When marked as <strong>Available</strong>, nearby hospital attenders searching for O+ blood or compatible components within 25 km can discover your contact profile. Toggle your availability when traveling or temporarily unable to donate.
+                            </p>
+
+                            <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+                                <button type="button" class="btn btn-secondary btn-sm" id="btnToggleAvailability">
+                                    Mark as Unavailable
+                                </button>
+                                <span style="font-size: 0.8125rem; color: var(--text-muted);">
+                                    Demo Toggle: Updates UI state locally without server calls.
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Relevant Blood Requests Section -->
+                        <div class="dashboard-card-section">
+                            <div class="dashboard-card-header">
+                                <h2 class="dashboard-card-title">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                                    </svg>
+                                    Relevant Blood Requests (Sample)
+                                </h2>
+                                <span class="badge" style="background-color: var(--bg-alt); color: var(--text-secondary);">
+                                    3 Sample Matches
+                                </span>
+                            </div>
+
+                            <p style="font-size: 0.84375rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+                                Note: The following items are sample mock records for UI testing. Real patient requests will be populated via backend algorithms.
+                            </p>
+
+                            <div class="dashboard-requests-list">
+                                <!-- Sample Request 1 -->
+                                <div class="request-item-dashboard">
+                                    <div class="request-item-left">
+                                        <div class="blood-type-badge" style="width: 44px; height: 44px; font-size: 1rem;">O+</div>
+                                        <div class="request-item-details">
+                                            <h4>Whole Blood (2 Units Required)</h4>
+                                            <p>Sample Hospital, Jubilee Hills &bull; ~3.2 km away &bull; Needed within 6 hours</p>
+                                        </div>
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                        <span class="urgency-tag urgency-urgent">Urgent</span>
+                                        <button type="button" class="btn btn-primary btn-sm" data-demo-respond="REQ-101">Respond (Demo)</button>
+                                    </div>
+                                </div>
+
+                                <!-- Sample Request 2 -->
+                                <div class="request-item-dashboard">
+                                    <div class="request-item-left">
+                                        <div class="blood-type-badge" style="width: 44px; height: 44px; font-size: 1rem;">O+</div>
+                                        <div class="request-item-details">
+                                            <h4>Platelets / SDP (1 Unit Required)</h4>
+                                            <p>Care Health Center, Banjara Hills &bull; ~5.8 km away &bull; Immediate Surgery</p>
+                                        </div>
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                        <span class="urgency-tag urgency-emergency">Emergency</span>
+                                        <button type="button" class="btn btn-primary btn-sm" data-demo-respond="REQ-102">Respond (Demo)</button>
+                                    </div>
+                                </div>
+
+                                <!-- Sample Request 3 -->
+                                <div class="request-item-dashboard">
+                                    <div class="request-item-left">
+                                        <div class="blood-type-badge" style="width: 44px; height: 44px; font-size: 1rem;">O+</div>
+                                        <div class="request-item-details">
+                                            <h4>Red Blood Cells / PRBC (1 Unit)</h4>
+                                            <p>City Medical Institute, Hitec City &bull; ~8.5 km away &bull; Scheduled Procedure</p>
+                                        </div>
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                        <span class="urgency-tag urgency-normal">Normal</span>
+                                        <button type="button" class="btn btn-secondary btn-sm" data-demo-respond="REQ-103">View Details</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Right Column: Quick Actions & Activity Timeline -->
+                    <div>
+                        <!-- Quick Actions Card -->
+                        <div class="dashboard-card-section">
+                            <div class="dashboard-card-header">
+                                <h2 class="dashboard-card-title">Quick Actions</h2>
+                            </div>
+
+                            <div class="quick-actions-card-list">
+                                <a href="donor-register.html" class="quick-action-btn">
+                                    <span>Update Donor Profile</span>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                </a>
+                                <a href="request-blood.html" class="quick-action-btn">
+                                    <span>Submit Blood Request</span>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                </a>
+                                <a href="index.html#find-blood" class="quick-action-btn">
+                                    <span>Search Available Help</span>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                </a>
+                                <button type="button" class="quick-action-btn" style="width: 100%; text-align: left; cursor: pointer;" id="btnContactPref">
+                                    <span>Contact Preferences</span>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Recent Activity Timeline Card -->
+                        <div class="dashboard-card-section">
+                            <div class="dashboard-card-header">
+                                <h2 class="dashboard-card-title">Recent Activity (Demo)</h2>
+                            </div>
+
+                            <div class="dashboard-timeline-list">
+                                <div class="timeline-entry">
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-entry-content">
+                                        <strong>Availability Verified &bull; Demo</strong>
+                                        Status marked active for radius 25 km
+                                        <div class="timeline-entry-time">Today, 10:30 AM</div>
+                                    </div>
+                                </div>
+
+                                <div class="timeline-entry">
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-entry-content">
+                                        <strong>Sample Match Alert &bull; Demo</strong>
+                                        Viewed Whole Blood request #REQ-101
+                                        <div class="timeline-entry-time">Yesterday, 4:15 PM</div>
+                                    </div>
+                                </div>
+
+                                <div class="timeline-entry">
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-entry-content">
+                                        <strong>Donor Profile Created &bull; Demo</strong>
+                                        Voluntary registration registered on BloodBridge
+                                        <div class="timeline-entry-time">14 Jan 2026</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- =====================================================================
+         3. Footer
+         ===================================================================== -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Brand Column -->
+                <div class="footer-brand">
+                    <a href="index.html" class="brand-logo">
+                        <svg class="brand-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                        </svg>
+                        <span class="brand-text">Blood<span>Bridge</span></span>
+                    </a>
+                    <p class="footer-tagline">"Connecting People. Saving Lives."</p>
+                    <p class="footer-summary">
+                        A real-world prototype platform connecting voluntary donors, patient attenders, and certified blood banks through location-aware discovery.
+                    </p>
+                </div>
+
+                <!-- Column 1: Navigation -->
+                <div>
+                    <h4 class="footer-col-title">Quick Links</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="index.html" class="footer-link">Home</a></li>
+                        <li><a href="request-blood.html" class="footer-link">Find Blood</a></li>
+                        <li><a href="index.html#how-it-works" class="footer-link">How It Works</a></li>
+                        <li><a href="index.html#trust" class="footer-link">Trust & Safety</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 2: Ecosystem -->
+                <div>
+                    <h4 class="footer-col-title">Portals</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="donor-register.html" class="footer-link">Donor Registration</a></li>
+                        <li><a href="request-blood.html" class="footer-link">Blood Request</a></li>
+                        <li><a href="donor-dashboard.html" class="footer-link">Demo Dashboard</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Legal & Standards -->
+                <div>
+                    <h4 class="footer-col-title">Project Standards</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="../docs/architecture/ARCHITECTURE.md" class="footer-link">System Architecture</a></li>
+                        <li><a href="../docs/database/DATABASE_DESIGN.md" class="footer-link">Database Schema</a></li>
+                        <li><a href="../docs/api/API_SPEC.md" class="footer-link">API Specification</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div>&copy; 2026 BloodBridge. All rights reserved.</div>
+                <div class="footer-legal-notice">
+                    Medical Disclaimer: BloodBridge facilitates discovery and does not make clinical transfusion determinations.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Placeholder Modal -->
+    <div class="modal-overlay" id="infoModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-dialog">
+            <button type="button" class="modal-close-btn" id="modalCloseBtn" aria-label="Close modal">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="modal-header-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                </svg>
+            </div>
+            <h3 class="modal-title" id="modalTitle">Feature Notice</h3>
+            <p class="modal-body-text" id="modalDescription"></p>
+            <button type="button" class="btn btn-primary btn-full" id="modalConfirmBtn">Got it</button>
+        </div>
+    </div>
+
+    <!-- Baseline Scripts -->
+    <script src="js/main.js"></script>
+
+    <!-- Self-Contained Dashboard Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const btnToggleAvailability = document.getElementById('btnToggleAvailability');
+            const donorStatusBadge = document.getElementById('donorStatusBadge');
+            const availabilityText = document.getElementById('availabilityText');
+            const dashboardNoticeBanner = document.getElementById('dashboardNoticeBanner');
+
+            if (btnToggleAvailability && donorStatusBadge && availabilityText) {
+                btnToggleAvailability.addEventListener('click', () => {
+                    const isCurrentlyAvailable = donorStatusBadge.getAttribute('data-status') === 'available';
+
+                    if (isCurrentlyAvailable) {
+                        donorStatusBadge.setAttribute('data-status', 'unavailable');
+                        donorStatusBadge.textContent = 'Currently Unavailable';
+                        donorStatusBadge.style.backgroundColor = 'var(--bg-alt)';
+                        donorStatusBadge.style.color = 'var(--text-muted)';
+                        donorStatusBadge.style.borderColor = 'var(--border-color)';
+                        availabilityText.textContent = 'Paused';
+                        btnToggleAvailability.textContent = 'Mark as Available';
+                        btnToggleAvailability.className = 'btn btn-primary btn-sm';
+                    } else {
+                        donorStatusBadge.setAttribute('data-status', 'available');
+                        donorStatusBadge.textContent = 'Available for Requests';
+                        donorStatusBadge.style.backgroundColor = 'var(--success-bg)';
+                        donorStatusBadge.style.color = 'var(--success-text)';
+                        donorStatusBadge.style.borderColor = 'var(--success-border)';
+                        availabilityText.textContent = 'Active';
+                        btnToggleAvailability.textContent = 'Mark as Unavailable';
+                        btnToggleAvailability.className = 'btn btn-secondary btn-sm';
+                    }
+
+                    if (dashboardNoticeBanner) {
+                        dashboardNoticeBanner.style.display = 'block';
+                        dashboardNoticeBanner.innerHTML = `
+                            <span>Availability updated to <strong>${donorStatusBadge.textContent}</strong> (UI demo toggle only; backend persistence is not yet active).</span>
+                        `;
+                    }
+                });
+            }
+
+            const btnLogout = document.getElementById('btnLogout');
+            const modalOverlay = document.getElementById('infoModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDescription = document.getElementById('modalDescription');
+
+            if (btnLogout && modalOverlay && modalTitle && modalDescription) {
+                btnLogout.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    modalTitle.textContent = 'Demo Session Notice';
+                    modalDescription.textContent = 'This is a prototype demo dashboard. Logging out does not revoke server-side sessions because backend authentication has not been enabled yet.';
+                    modalOverlay.classList.add('active');
+                });
+            }
+
+            const btnContactPref = document.getElementById('btnContactPref');
+            if (btnContactPref && modalOverlay && modalTitle && modalDescription) {
+                btnContactPref.addEventListener('click', () => {
+                    modalTitle.textContent = 'Notification Settings';
+                    modalDescription.textContent = 'Direct SMS and email dispatch preferences will be configured during Phase 3 notification integration.';
+                    modalOverlay.classList.add('active');
+                });
+            }
+
+            const demoRespondBtns = document.querySelectorAll('[data-demo-respond]');
+            demoRespondBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const reqCode = btn.getAttribute('data-demo-respond');
+                    if (dashboardNoticeBanner) {
+                        dashboardNoticeBanner.style.display = 'block';
+                        dashboardNoticeBanner.innerHTML = `
+                            <span><strong>Demo Action:</strong> Response initiated for request #${reqCode}. In the final platform, this triggers donor-requester coordination via Spring Boot endpoints.</span>
+                        `;
+                        dashboardNoticeBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

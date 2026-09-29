@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create a basic BloodBridge account to access blood discovery, donor matching, and platform services.">
+    <title>Create Your BloodBridge Account — BloodBridge</title>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- Self-contained Auth Styles -->
+    <style>
+        .auth-page-section {
+            padding: 3.5rem 0 5rem;
+            min-height: calc(100vh - 4.5rem - 300px);
+            display: flex;
+            align-items: center;
+        }
+
+        .auth-container {
+            max-width: 500px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .auth-card {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-xl);
+            padding: 2.5rem 2.25rem;
+        }
+
+        .password-input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .password-input-wrapper .form-control {
+            padding-right: 3rem;
+        }
+
+        .password-toggle-btn {
+            position: absolute;
+            right: 0.75rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-muted);
+            padding: 0.35rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius-sm);
+            transition: color var(--transition-fast);
+        }
+
+        .password-toggle-btn:hover {
+            color: var(--text-primary);
+        }
+
+        .password-toggle-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .auth-footer-nav {
+            text-align: center;
+            margin-top: 1.75rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .auth-link {
+            color: var(--primary);
+            font-weight: 600;
+            transition: color var(--transition-fast);
+        }
+
+        .auth-link:hover {
+            color: var(--primary-hover);
+            text-decoration: underline;
+        }
+
+        @media (max-width: 480px) {
+            .auth-card {
+                padding: 1.75rem 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- =====================================================================
+         1. Navigation Header
+         ===================================================================== -->
+    <header class="site-header" id="siteHeader">
+        <div class="container nav-container">
+            <!-- Brand Logo -->
+            <a href="index.html" class="brand-logo" aria-label="BloodBridge Home">
+                <svg class="brand-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                </svg>
+                <span class="brand-text">Blood<span>Bridge</span></span>
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="nav-menu" id="navMenu" aria-label="Main Navigation">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="request-blood.html" class="nav-link">Find Blood</a>
+                <a href="donor-register.html" class="nav-link">Donate Blood</a>
+                <a href="index.html#roles" class="nav-link">Blood Banks</a>
+                <a href="index.html#how-it-works" class="nav-link">How It Works</a>
+                <a href="index.html#trust" class="nav-link">Trust & Safety</a>
+
+                <div class="nav-actions">
+                    <a href="login.html" class="btn btn-secondary btn-sm">Login</a>
+                    <a href="register.html" class="btn btn-primary btn-sm">Register</a>
+                </div>
+            </nav>
+
+            <!-- Mobile Hamburger Toggle -->
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation Menu" aria-expanded="false" aria-controls="navMenu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- =================================================================
+             2. Page Header & Breadcrumb
+             ================================================================= -->
+        <section class="page-header-section">
+            <div class="container auth-container">
+                <nav class="breadcrumb-nav" aria-label="Breadcrumbs">
+                    <a href="index.html" class="breadcrumb-link">Home</a>
+                    <span class="breadcrumb-separator" aria-hidden="true">/</span>
+                    <span class="breadcrumb-current" aria-current="page">Account Registration</span>
+                </nav>
+
+                <div class="section-header" style="text-align: left; margin-bottom: 0;">
+                    <span class="section-tag">Account Setup</span>
+                    <h1 class="section-title" style="font-size: 2.15rem;">Create Your BloodBridge Account</h1>
+                    <p class="section-subtitle">
+                        Create an account to access BloodBridge services and manage your activity.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================================
+             3. Registration Form Section
+             ================================================================= -->
+        <section class="auth-page-section">
+            <div class="container auth-container">
+
+                <!-- Prototype Notice Banner -->
+                <div class="form-notice-box" role="note">
+                    <svg class="form-notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="8" x2="12" y2="12"></line>
+                        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                    <div class="form-notice-content">
+                        <strong>Prototype Demonstration:</strong> This is a frontend account creation interface. No database persistence or passwords are saved. Real accounts with Spring Security will be enabled in a later phase.
+                    </div>
+                </div>
+
+                <!-- Registration Card -->
+                <div class="auth-card" id="registerCard">
+                    <form id="accountRegistrationForm" novalidate>
+                        
+                        <!-- Full Name -->
+                        <div class="form-group">
+                            <label for="regFullName" class="form-label">Full Name <span class="required-indicator">*</span></label>
+                            <input type="text" id="regFullName" class="form-control" placeholder="Enter your full name" required>
+                            <span class="field-error-msg" id="regFullNameError">Please enter your full name.</span>
+                        </div>
+
+                        <!-- Email Address -->
+                        <div class="form-group">
+                            <label for="regEmail" class="form-label">Email Address <span class="required-indicator">*</span></label>
+                            <input type="email" id="regEmail" class="form-control" placeholder="e.g. name@example.com" required>
+                            <span class="field-error-msg" id="regEmailError">Please enter a valid email address.</span>
+                        </div>
+
+                        <!-- Phone Number -->
+                        <div class="form-group">
+                            <label for="regPhone" class="form-label">Phone Number <span class="required-indicator">*</span></label>
+                            <input type="tel" id="regPhone" class="form-control" placeholder="e.g. 9876543210" required>
+                            <span class="field-error-msg" id="regPhoneError">Please enter a valid 10-digit phone number.</span>
+                        </div>
+
+                        <!-- Account Role -->
+                        <div class="form-group">
+                            <label for="regRole" class="form-label">Account Role <span class="required-indicator">*</span></label>
+                            <select id="regRole" class="form-control" required>
+                                <option value="" disabled selected>Select Account Role</option>
+                                <option value="Requester">Requester / Patient Attender</option>
+                                <option value="Donor">Voluntary Blood Donor</option>
+                                <option value="Blood Bank">Blood Bank Representative</option>
+                            </select>
+                            <span class="field-error-msg" id="regRoleError">Please select an account role.</span>
+                        </div>
+
+                        <!-- Password -->
+                        <div class="form-group">
+                            <label for="regPassword" class="form-label">Password <span class="required-indicator">*</span></label>
+                            <div class="password-input-wrapper">
+                                <input type="password" id="regPassword" class="form-control" placeholder="Minimum 8 characters" required>
+                                <button type="button" class="password-toggle-btn" data-target="regPassword" aria-label="Show password">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
+                                </button>
+                            </div>
+                            <span class="field-helper-text">Must be at least 8 characters long.</span>
+                            <span class="field-error-msg" id="regPasswordError">Password must be at least 8 characters long.</span>
+                        </div>
+
+                        <!-- Confirm Password -->
+                        <div class="form-group">
+                            <label for="regConfirmPassword" class="form-label">Confirm Password <span class="required-indicator">*</span></label>
+                            <div class="password-input-wrapper">
+                                <input type="password" id="regConfirmPassword" class="form-control" placeholder="Re-enter password" required>
+                                <button type="button" class="password-toggle-btn" data-target="regConfirmPassword" aria-label="Show password">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
+                                </button>
+                            </div>
+                            <span class="field-error-msg" id="regConfirmPasswordError">Passwords do not match.</span>
+                        </div>
+
+                        <!-- Consent Checkbox -->
+                        <div style="margin: 1.5rem 0;">
+                            <label class="checkbox-item" for="regConsent">
+                                <input type="checkbox" id="regConsent" class="checkbox-input" required>
+                                <span class="checkbox-text">
+                                    I agree to the BloodBridge terms and understand that account creation does not confirm medical eligibility for blood donation. <span class="required-indicator">*</span>
+                                </span>
+                            </label>
+                            <span class="field-error-msg" id="regConsentError">You must agree to the terms to proceed.</span>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-primary btn-lg btn-full" id="btnSubmitRegister">
+                            Create Account
+                        </button>
+
+                        <div class="auth-footer-nav">
+                            Already have an account? <a href="login.html" class="auth-link">Sign In</a>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Registration Success Card (Hidden initially) -->
+                <div class="submission-success-card" id="registerSuccessCard" role="region" aria-live="polite">
+                    <div class="success-icon-badge">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </div>
+
+                    <h2 class="success-card-title">Account Registration Form Completed</h2>
+                    <p class="success-card-lead">
+                        Your account parameters have been validated successfully on the client interface.
+                    </p>
+
+                    <!-- Prototype Notice -->
+                    <div class="prototype-phase-notice">
+                        <svg class="prototype-notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                        </svg>
+                        <div class="prototype-notice-text">
+                            <strong>Development Notice:</strong> Backend account creation and secure password hashing (BCrypt) will be connected in a later phase. No sensitive credentials have been stored.
+                        </div>
+                    </div>
+
+                    <!-- Summary Box -->
+                    <div class="summary-details-box">
+                        <div class="summary-details-title">Validated Registration Parameters</div>
+                        <div class="summary-grid" id="registerSummaryGrid">
+                            <!-- Populated via JS -->
+                        </div>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="success-actions">
+                        <a href="login.html" class="btn btn-primary">Proceed to Login</a>
+                        <button type="button" class="btn btn-secondary" id="btnResetRegisterForm">Register Another Account</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- =====================================================================
+         4. Footer
+         ===================================================================== -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Brand Column -->
+                <div class="footer-brand">
+                    <a href="index.html" class="brand-logo">
+                        <svg class="brand-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                        </svg>
+                        <span class="brand-text">Blood<span>Bridge</span></span>
+                    </a>
+                    <p class="footer-tagline">"Connecting People. Saving Lives."</p>
+                    <p class="footer-summary">
+                        A real-world prototype platform connecting voluntary donors, patient attenders, and certified blood banks through location-aware discovery.
+                    </p>
+                </div>
+
+                <!-- Column 1: Navigation -->
+                <div>
+                    <h4 class="footer-col-title">Quick Links</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="index.html" class="footer-link">Home</a></li>
+                        <li><a href="request-blood.html" class="footer-link">Find Blood</a></li>
+                        <li><a href="index.html#how-it-works" class="footer-link">How It Works</a></li>
+                        <li><a href="index.html#trust" class="footer-link">Trust & Safety</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 2: Ecosystem -->
+                <div>
+                    <h4 class="footer-col-title">Portals</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="donor-register.html" class="footer-link">Donor Registration</a></li>
+                        <li><a href="request-blood.html" class="footer-link">Blood Request</a></li>
+                        <li><a href="donor-dashboard.html" class="footer-link">Demo Dashboard</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Legal & Standards -->
+                <div>
+                    <h4 class="footer-col-title">Project Standards</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="../docs/architecture/ARCHITECTURE.md" class="footer-link">System Architecture</a></li>
+                        <li><a href="../docs/database/DATABASE_DESIGN.md" class="footer-link">Database Schema</a></li>
+                        <li><a href="../docs/api/API_SPEC.md" class="footer-link">API Specification</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div>&copy; 2026 BloodBridge. All rights reserved.</div>
+                <div class="footer-legal-notice">
+                    Medical Disclaimer: BloodBridge facilitates discovery and does not make clinical transfusion determinations.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Baseline Scripts -->
+    <script src="js/main.js"></script>
+
+    <!-- Self-Contained Page Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Password Visibility Toggle
+            const toggleButtons = document.querySelectorAll('.password-toggle-btn');
+            toggleButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const targetId = btn.getAttribute('data-target');
+                    const targetInput = document.getElementById(targetId);
+                    if (!targetInput) return;
+
+                    const isPassword = targetInput.type === 'password';
+                    targetInput.type = isPassword ? 'text' : 'password';
+                    btn.setAttribute('aria-label', isPassword ? 'Hide password' : 'Show password');
+
+                    if (isPassword) {
+                        btn.innerHTML = `
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                                <line x1="1" y1="1" x2="23" y2="23"></line>
+                            </svg>
+                        `;
+                    } else {
+                        btn.innerHTML = `
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        `;
+                    }
+                });
+            });
+
+            // Form Validation & Handling
+            const registerForm = document.getElementById('accountRegistrationForm');
+            const registerCard = document.getElementById('registerCard');
+            const registerSuccessCard = document.getElementById('registerSuccessCard');
+            const registerSummaryGrid = document.getElementById('registerSummaryGrid');
+            const btnReset = document.getElementById('btnResetRegisterForm');
+
+            if (!registerForm) return;
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const phonePattern = /^\+?[0-9\s\-]{10,15}$/;
+
+            registerForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                let isValid = true;
+                let firstInvalidField = null;
+
+                function validateField(inputEl, errorEl, condition) {
+                    if (!condition) {
+                        inputEl.classList.add('is-invalid');
+                        inputEl.classList.remove('is-valid');
+                        if (errorEl) errorEl.classList.add('visible');
+                        if (!firstInvalidField) firstInvalidField = inputEl;
+                        isValid = false;
+                    } else {
+                        inputEl.classList.remove('is-invalid');
+                        inputEl.classList.add('is-valid');
+                        if (errorEl) errorEl.classList.remove('visible');
+                    }
+                }
+
+                // 1. Full Name
+                const name = document.getElementById('regFullName');
+                const nameError = document.getElementById('regFullNameError');
+                validateField(name, nameError, name.value.trim().length >= 2);
+
+                // 2. Email Address
+                const email = document.getElementById('regEmail');
+                const emailError = document.getElementById('regEmailError');
+                validateField(email, emailError, emailPattern.test(email.value.trim()));
+
+                // 3. Phone Number
+                const phone = document.getElementById('regPhone');
+                const phoneError = document.getElementById('regPhoneError');
+                const cleanPhone = phone.value.replace(/[\s\-]/g, '');
+                validateField(phone, phoneError, cleanPhone.length >= 10 && phonePattern.test(phone.value.trim()));
+
+                // 4. Account Role
+                const role = document.getElementById('regRole');
+                const roleError = document.getElementById('regRoleError');
+                validateField(role, roleError, role.value !== '');
+
+                // 5. Password (>= 8 chars)
+                const password = document.getElementById('regPassword');
+                const passwordError = document.getElementById('regPasswordError');
+                validateField(password, passwordError, password.value.length >= 8);
+
+                // 6. Confirm Password (matches password)
+                const confirmPassword = document.getElementById('regConfirmPassword');
+                const confirmPasswordError = document.getElementById('regConfirmPasswordError');
+                validateField(confirmPassword, confirmPasswordError, confirmPassword.value === password.value && confirmPassword.value.length > 0);
+
+                // 7. Consent Checkbox
+                const consent = document.getElementById('regConsent');
+                const consentError = document.getElementById('regConsentError');
+                if (!consent.checked) {
+                    if (consentError) consentError.classList.add('visible');
+                    if (!firstInvalidField) firstInvalidField = consent;
+                    isValid = false;
+                } else {
+                    if (consentError) consentError.classList.remove('visible');
+                }
+
+                if (!isValid) {
+                    if (firstInvalidField) firstInvalidField.focus();
+                    return;
+                }
+
+                function escapeText(str) {
+                    if (!str) return '';
+                    return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+                }
+
+                // Show safe summary (no passwords stored or displayed)
+                if (registerSummaryGrid) {
+                    registerSummaryGrid.innerHTML = `
+                        <div class="summary-item">
+                            <span class="summary-item-label">Full Name</span>
+                            <span class="summary-item-value">${escapeText(name.value.trim())}</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-item-label">Account Role</span>
+                            <span class="summary-item-value" style="color: var(--primary); font-weight:700;">${escapeText(role.value)}</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-item-label">Email Address</span>
+                            <span class="summary-item-value">${escapeText(email.value.trim())}</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-item-label">Phone Number</span>
+                            <span class="summary-item-value">${escapeText(phone.value.trim())}</span>
+                        </div>
+                    `;
+                }
+
+                if (registerCard) registerCard.style.display = 'none';
+                if (registerSuccessCard) {
+                    registerSuccessCard.classList.add('active');
+                    registerSuccessCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+
+            if (btnReset) {
+                btnReset.addEventListener('click', () => {
+                    registerForm.reset();
+                    const inputs = registerForm.querySelectorAll('.form-control');
+                    inputs.forEach(input => input.classList.remove('is-valid', 'is-invalid'));
+                    const errorMsgs = registerForm.querySelectorAll('.field-error-msg');
+                    errorMsgs.forEach(msg => msg.classList.remove('visible'));
+
+                    if (registerSuccessCard) registerSuccessCard.classList.remove('active');
+                    if (registerCard) {
+                        registerCard.style.display = 'block';
+                        registerCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
