@@ -1,4 +1,4 @@
-/**
+﻿/**
  * ============================================================================
  * BloodBridge - Frontend Client Controller
  * Focus: Clean, modular UI interactions, responsive menu, and client-side validation
@@ -101,7 +101,7 @@ function initSearchForm() {
         }
 
         // Informative UI feedback (Acknowledging frontend-only mode)
-        const summaryMsg = `Search parameters captured: [${bloodGroup} | ${bloodComponent} | Urgency: ${urgencyLevel} | Location: ${locationInput}]. In Day 4 prototype mode, queries are validated locally. Full Spring Boot matching will be connected in Week 3.`;
+        const summaryMsg = `Search parameters captured: [${bloodGroup} | ${bloodComponent} | Urgency: ${urgencyLevel} | Location: ${locationInput}]. Search request captured successfully. BloodBridge matching services are being integrated with the backend.`;
         showFeedback(summaryMsg, 'info');
     });
 
@@ -150,15 +150,15 @@ function initModalHandlers() {
         const modalContentMap = {
             'login': {
                 title: 'User Login Portal',
-                description: 'Authentication module will be connected during Day 8 (Spring Security + JWT token auth). This is a frontend placeholder.'
+                description: 'BloodBridge Login Portal — enter your registered account details to continue.'
             },
             'register': {
                 title: 'User Registration Portal',
-                description: 'General account registration with role selection (Donor, Requester, Blood Bank) will be available when backend authentication endpoints are active.'
+                description: 'Create your BloodBridge account as a Donor, Requester, or Blood Bank user.'
             },
             'blood-bank': {
                 title: 'Blood Bank Facility Portal',
-                description: 'Licensed blood banks will manage real-time component inventories and emergency requests through their verified portal in Week 3.'
+                description: 'Blood Bank Portal — manage blood inventory and respond to blood requirements.'
             }
         };
 
@@ -325,7 +325,7 @@ function initDonorRegistrationForm() {
             </div>
             <div class="summary-item">
                 <span class="summary-item-label">Contact Details</span>
-                <span class="summary-item-value">${escapeHtml(phone.value.trim())} • ${escapeHtml(email.value.trim())}</span>
+                <span class="summary-item-value">${escapeHtml(phone.value.trim())} â€¢ ${escapeHtml(email.value.trim())}</span>
             </div>
             <div class="summary-item">
                 <span class="summary-item-label">Location / City</span>
@@ -480,7 +480,7 @@ function initBloodRequestForm() {
             </div>
             <div class="summary-item">
                 <span class="summary-item-label">Requirement</span>
-                <span class="summary-item-value" style="color: var(--primary); font-weight:800;">${escapeHtml(bloodGroup.value)} • ${escapeHtml(component.value)} (${escapeHtml(units.value)} Units)</span>
+                <span class="summary-item-value" style="color: var(--primary); font-weight:800;">${escapeHtml(bloodGroup.value)} â€¢ ${escapeHtml(component.value)} (${escapeHtml(units.value)} Units)</span>
             </div>
             <div class="summary-item">
                 <span class="summary-item-label">Hospital Location</span>
@@ -525,3 +525,4 @@ function escapeHtml(str) {
         .replace(/"/g, '&quot;')
         .replace(/'/g, '&#039;');
 }
+
